@@ -12,31 +12,6 @@
   overflow: scroll;
 }
 
-#sidebar-wrapper {
-  z-index: 1000;
-  position: absolute;
-  left: 250px;
-  width: 0;
-  height: 100%;
-  margin-left: -250px;
-  overflow-y: auto;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  background-color: #234495;
-  box-shadow: 5px 2px 3px 0 rgba(0, 0, 0, 0.55);
-  font: 13px Arial;
-  text-align: center;
-}
-
-#sidebar-wrapper button{
-  box-shadow: 0 0 10px 0 #000;
-  border-radius: 10px;
-  margin: 10px auto;
-  background-color: #f8f8f8;
-}
-
 #page-content-wrapper {
   position: absolute;
   padding: 15px;
@@ -70,29 +45,81 @@
   font: 14px Arial;
 }
 
-.collapseMenu img {
-  position: relative;
-  right: 15px;
+.well.well-lg.collapseMenu {
+  background-color: #234495;
+}
+
+.navbar {
+  z-index: 100;
+  width: 100%;
+  border-radius: 0;
+}
+
+.navbar-toggle {
+  background-color: #234495;
+  width: 40px;
+  color: #FFF;
+  transition: all 300ms ease-out;
+}
+
+.navbar-toggle:hover{
+  transform: rotateZ(180deg);
 }
 
 /* Sidebar Styles */
 
-.sidebar-nav {
+#sidebar-wrapper {
+  z-index: 99;
   position: absolute;
   top: 0;
-  width: 250px;
-  margin: 2px 0 0 0;
-  padding: 0;
-  list-style: none;
+  left: 50px;
+  width: 0;
+  height: 100%;
+  margin-left: -50px;
+  overflow-y: auto;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background-color: #234495;
+  box-shadow: 5px 2px 3px 0 rgba(0, 0, 0, 0.55);
+  font: 13px Arial;
+  text-align: center;
+  padding-top: 52px;
+}
+
+#sidebar-wrapper button {
+  box-shadow: 0 0 10px 0 #000;
+  border-radius: 10px;
+  margin: 10px auto;
+  background-color: #f8f8f8;
+  transition: all 600ms ease-out;
+  border: solid 2px #000;
+}
+
+#sidebar-wrapper button:hover {
+  transform: scale(1.1);
+  transform: rotateY(180deg);
+  background-color: #2e6da4;
+  color: #FFF;
+  border-color: #fff;
 }
 
 .no-margin {
   margin: 0;
 }
 
-.button-topbar{
+.button-topbar {
   width: 155px;
   text-align: left;
+  transition: all 600ms ease-out;
+
+}
+
+.button-topbar:hover {
+  background-color: #2e6da4;
+  opacity: 0.8;
+  color: #FFF;
 }
 
 @media (min-width: 768px) {
