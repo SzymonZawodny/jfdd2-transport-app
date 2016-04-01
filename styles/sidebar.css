@@ -63,6 +63,29 @@
   top: -15px;
 }
 
+.collapseMenu {
+  width: 200px;
+  position: absolute;
+  right: 15px;
+  top: 22px;
+  font-size: 14px;
+  font-family: Arial sans-serif;
+}
+
+.collapseMenu a {
+  text-decoration: none;
+  display: block;
+}
+
+.collapseMenu a:hover {
+  text-decoration: none;
+}
+
+.collapseMenu img {
+  position: relative;
+  right: 15px;
+}
+
 /* Sidebar Styles */
 
 .sidebar-nav {
@@ -84,6 +107,10 @@
   }
 
   #menu-toggle-2 {
+    display: none;
+  }
+
+  .collapseMenu {
     display: none;
   }
 
