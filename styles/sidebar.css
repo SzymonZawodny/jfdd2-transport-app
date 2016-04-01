@@ -1,0 +1,133 @@
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+  overflow: scroll;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: absolute;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background-color: #234495;
+  box-shadow: 5px 2px 3px 0 rgba(0, 0, 0, 0.55);
+}
+
+#sidebar-wrapper li {
+  margin: 30px auto;
+  text-align: center;
+}
+
+#sidebar-wrapper li img {
+  box-shadow: 0 0 10px 0 #fff;
+  border-radius: 10px;
+}
+
+#page-content-wrapper {
+  position: absolute;
+  padding: 15px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.xyz {
+  min-width: 360px;
+}
+
+.fixed-brand {
+  width: auto;
+}
+
+.logo-half {
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  -o-transform: scale(0.7);
+  transform: scale(0.7);
+  position: relative;
+  top: -15px;
+}
+
+.collapseMenu {
+  width: 200px;
+  position: absolute;
+  right: 15px;
+  top: 22px;
+  font-size: 14px;
+  font-family: Arial sans-serif;
+}
+
+.collapseMenu a {
+  text-decoration: none;
+  display: block;
+}
+
+.collapseMenu a:hover {
+  text-decoration: none;
+}
+
+.collapseMenu img {
+  position: relative;
+  right: 15px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 2px 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  #wrapper {
+    padding-left: 80px;
+  }
+
+  #menu-toggle-2 {
+    display: none;
+  }
+
+  .collapseMenu {
+    display: none;
+  }
+
+  .fixed-brand {
+    width: 100px;
+  }
+
+  #sidebar-wrapper {
+    width: 80px;
+  }
+
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+}

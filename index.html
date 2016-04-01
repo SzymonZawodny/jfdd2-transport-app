@@ -1,18 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="transportApp" class="no-js" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KoLiber</title>
   <link rel="icon" href="images/others/koliber-logo.png"/>
-  <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="bootstrap/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="vendor/ui-bootstrap/ui-bootstrap-1.2.5-csp.css">
   <link href="styles/reset.css" rel="stylesheet">
   <link href="styles/index.css" rel="stylesheet">
+  <link href="styles/sidebar.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
+<!--TOP BAR-->
+<nav class="navbar navbar-default no-margin">
+  <div class="navbar-header fixed-brand">
+    <a class="navbar-brand" href="#"><img class="logo-half" src="images/others/koliber-logo.png"></a>
+    <div class="container" ng-controller="collapseMenu">
+      <button type="button" class="btn btn-default navbar-toggle collapsed"
+              ng-click="isCollapsed = !isCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div uib-collapse="isCollapsed" class="collapseMenu">
+        <div class="well well-lg collapseMenu">
+          <a href="#"><img src="images/others/koliber-logo.png">Przystanki</a>
+          <a href="#"><img src="images/others/koliber-logo.png">Linie</a>
+          <a href="#"><img src="images/others/koliber-logo.png">Opóźnienia</a>
+          <a href="#"><img src="images/others/koliber-logo.png">Ulubione</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!--TOP BAR END-->
+<!--SIDEBAR-->
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul>
+      <li>
+        <a href="#"><img src="images/others/koliber-logo.png"></a>
+      </li>
+      <li>
+        <a href="#"><img src="images/others/koliber-logo.png"></a>
+      </li>
+      <li>
+        <a href="#"><img src="images/others/koliber-logo.png"></a>
+      </li>
+      <li>
+        <a href="#"><img src="images/others/koliber-logo.png"></a>
+      </li>
+    </ul>
+  </div>
+  <!--SIDEBAR END-->
+  <!-- CONTENT -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid xyz">
+      <div class="row">
+        <div class="col-lg-12">
 
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- CONTENT END-->
+
+</div>
+<script src="vendor/jquery.min.js"></script>
+<script src="vendor/angular/angular.min.js"></script>
+<script src="vendor/angular/angular-animate.js"></script>
+<script src="vendor/angular/angular-touch.js"></script>
+<script src="vendor/ui-bootstrap/ui-bootstrap-tpls-1.2.5.min.js"></script>
+<script src="vendor/bootstrap/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
 </body>
-<script src="bootstrap/jquery.min.js"></script>
 </html>
