@@ -1,1 +1,1 @@
-angular.module("transport-app", []);
+angular.module('transport-app', ['ui.bootstrap']);
