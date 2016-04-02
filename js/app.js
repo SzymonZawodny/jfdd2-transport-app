@@ -7,3 +7,13 @@ angular.module('transportApp')
 });
 
 
+angular.module('transportApp').controller('busStopAccordion', function ($scope) {
+  $scope.oneAtATime = true;
+
+  $scope.items = ['Przystanek1'];
+
+  $scope.status = {
+    isFirstOpen: true,
+    isFirstDisabled: false
+  };
+});
