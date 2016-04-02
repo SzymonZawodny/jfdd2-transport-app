@@ -72,29 +72,25 @@
   <!--SIDEBAR END-->
   <!-- CONTENT -->
   <div id="page-content-wrapper">
-    <div class="container-fluid favorites">
+    <div ng-controller="busStopAccordion" class="container-fluid favorites">
       <div class="comboboxSelector">
-      <select class="form-control">
-        <option>P1</option>
-        <option>P2</option>
-        <option>P3</option>
-        <option>P4</option>
-        <option>P5</option>
+      <select class="form-control color">
+        <option ng-repeat="busStops in busStops">{{busStops.name}}</option>
       </select>
       <button class="btn btn-primary btn-selector">Dodaj przystanek</button>
     </div>
 
       <div class="comboboxSelector">
-        <select class="form-control">
-          <option>123</option>
-          <option>145</option>
+        <select class="form-control color">
+          <option>Pokaż wszystkie</option>
+          <option ng-repeat="busStops in busStops">{{busStops.bus}}</option>
         </select>
         <button class="btn btn-primary btn-selector">Filtruj</button>
       </div>
 
-      <div ng-controller="busStopAccordion" class="busStopAccordion">
+      <div class="busStopAccordion">
         <uib-accordion close-others="oneAtATime">
-          <uib-accordion-group heading={{items[0]}}>
+          <uib-accordion-group ng-repeat="busStops in busStops" heading={{busStops.name}}>
             <table class="table table-striped col-lg-12 table-stops">
               <tr>
                 <td class="col-line-no-header border background-color">Numer linii</td>
@@ -102,16 +98,12 @@
               </tr>
               <tr>
                 <td class="col-line-no border">
-                  <h3><span class="label label-primary">145</span></h3>
-                  <h4><span class="label label-primary">Karwiny szkoła</span></h4>
+                  <h3><span class="label label-primary">{{busStops.bus}}</span></h3>
+                  <h4><span class="label label-primary">{{busStops.destination}}</span></h4>
                 </td>
                 <td class="col-departures border">
-                  <span class="departure-span">0945</span>
-                  <span class="departure-span">0945</span>
-                  <span class="departure-span">0945</span>
-                  <span class="departure-span">0945</span>
-                  <span class="departure-span">0945</span>
-                </td>
+                  <span class="departure-span">{{busStops.departures}}</span>
+                 </td>
               </tr>
 
 

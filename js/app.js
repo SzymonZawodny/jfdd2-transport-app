@@ -10,10 +10,18 @@ angular.module('transportApp')
 angular.module('transportApp').controller('busStopAccordion', function ($scope) {
   $scope.oneAtATime = true;
 
-  $scope.items = ['Przystanek1'];
-
-  $scope.status = {
-    isFirstOpen: true,
-    isFirstDisabled: false
-  };
+  $scope.busStops = [
+    {
+      name: 'Buraczana',
+      bus: '145',
+      destination: 'Karwiny szkoła',
+      departures: ['0808', '0838', '0908']
+    },
+    {
+      name: 'Strzelców',
+      bus: '125',
+      destination: 'Źródło Marii',
+      departures: ['0805', '0835', '0905']
+    }
+    ]
 });

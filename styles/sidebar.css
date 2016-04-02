@@ -90,7 +90,6 @@ border-radius: 0;
 }
 
 #sidebar-wrapper button:hover {
-  transform: scale(1.1);
   transform: rotateY(180deg);
   background-color: #2e6da4;
   color: #FFF;
