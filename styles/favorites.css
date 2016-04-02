@@ -1,3 +1,9 @@
+#page-content-wrapper .title{
+  color: #337ab7;
+  margin: 20px 0 50px 0;
+  text-align: center;
+}
+
 #page-content-wrapper .panel-title {
   font-size: 30px;
   background-color: #337ab7;
@@ -71,6 +77,10 @@
 }
 
 @media (max-width: 768px) {
+
+  #page-content-wrapper {
+    width: 100%;
+  }
   #page-content-wrapper .btn-selector {
     left: 0;
     top: 10px;
