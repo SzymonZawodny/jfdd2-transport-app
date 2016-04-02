@@ -18,8 +18,11 @@
   <div class="navbar-header fixed-brand">
     <a class="navbar-brand" href="#"><img class="logo-half" src="images/others/koliber-logo.png"></a>
     <div class="container" ng-controller="collapseMenu">
-      <button type="button" class="btn btn-default btn-lg button-topbar button-favorites" aria-label="Left Align">
-        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>&nbsp Ulubione
+      <button ng-class="{active:tab===4}"
+              ng-click="tab = 4" type="button"
+              class="btn btn-default btn-lg button-topbar button-favorites" aria-label="Left Align">
+        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+        &nbsp Ulubione
       </button>
       <button type="button" class="btn btn-default navbar-toggle collapsed"
               ng-click="isCollapsed = !isCollapsed">
@@ -27,20 +30,32 @@
       </button>
       <div uib-collapse="isCollapsed" class="collapseMenu">
         <div class="well well-lg collapseMenu">
-          <button type="button" class="btn btn-default btn-lg button-topbar" aria-label="Left Align">
-            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp Przystanki
+          <button ng-class="{active:tab===1}"
+                  ng-click="tab = 1" type="button"
+                  class="btn btn-default btn-lg button-topbar" aria-label="Left Align">
+            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            &nbsp Przystanki
           </button>
 
-          <button type="button" class="btn btn-default btn-lg button-topbar" aria-label="Left Align">
-            <span class="glyphicon glyphicon-road" aria-hidden="true"></span>&nbsp Linie
+          <button ng-class="{active:tab===2}"
+                  ng-click="tab = 2" type="button"
+                  class="btn btn-default btn-lg button-topbar" aria-label="Left Align">
+            <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
+            &nbsp Linie
           </button>
 
-          <button type="button" class="btn btn-default btn-lg button-topbar" aria-label="Left Align">
-            <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>&nbsp Opóźnienia
+          <button ng-class="{active:tab===3}"
+                  ng-click="tab = 3" type="button"
+                  class="btn btn-default btn-lg button-topbar" aria-label="Left Align">
+            <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
+            &nbsp Opóźnienia
           </button>
 
-          <button type="button" class="btn btn-default btn-lg button-topbar" aria-label="Left Align">
-            <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>&nbsp Ulubione
+          <button ng-class="{active:tab===4}"
+                  ng-click="tab = 4" type="button"
+                  class="btn btn-default btn-lg button-topbar" aria-label="Left Align">
+            <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+            &nbsp Ulubione
           </button>
         </div>
       </div>
@@ -50,66 +65,94 @@
 <!--TOP BAR END-->
 <!--SIDEBAR-->
 <div id="wrapper">
-  <div id="sidebar-wrapper">
+  <div id="sidebar-wrapper" ng-init="tab = 4">
 
-    <button type="button" class="btn btn-default btn-lg button-sidebar" aria-label="Left Align">
-      <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+    <button ng-class="{active:tab===1}"
+            ng-click="tab = 1" type="button"
+            class="btn btn-default btn-lg button-sidebar"
+            aria-label="Left Align">
+      <span class="glyphicon glyphicon-list-alt"
+            aria-hidden="true"></span>
     </button>
 
-    <button type="button" class="btn btn-default btn-lg button-sidebar" aria-label="Left Align">
-      <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
+    <button ng-class="{active:tab===2}"
+            ng-click="tab = 2" type="button"
+            class="btn btn-default btn-lg button-sidebar"
+            aria-label="Left Align">
+      <span class="glyphicon glyphicon-road"
+            aria-hidden="true"></span>
     </button>
 
-    <button type="button" class="btn btn-default btn-lg button-sidebar" aria-label="Left Align">
-      <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
+    <button ng-class="{active:tab===3}"
+            ng-click="tab = 3" type="button"
+            class="btn btn-default btn-lg button-sidebar"
+            aria-label="Left Align">
+      <span class="glyphicon glyphicon-hourglass"
+            aria-hidden="true"></span>
     </button>
 
-    <button type="button" class="btn btn-default btn-lg button-sidebar" aria-label="Left Align">
-      <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+    <button ng-class="{active:tab===4}"
+            ng-click="tab = 4" type="button"
+            class="btn btn-default btn-lg button-sidebar"
+            aria-label="Left Align">
+      <span class="glyphicon glyphicon-heart-empty"
+            aria-hidden="true"></span>
     </button>
 
   </div>
   <!--SIDEBAR END-->
   <!-- CONTENT -->
   <div id="page-content-wrapper">
-    <div ng-controller="busStopAccordion" class="container-fluid favorites">
-      <div class="comboboxSelector">
-      <select class="form-control color">
-        <option ng-repeat="busStops in busStops">{{busStops.name}}</option>
-      </select>
-      <button class="btn btn-primary btn-selector">Dodaj przystanek</button>
+    <div class="panel" ng-show="tab === 1">
+      <span>TAB 1</span>
+
     </div>
+    <div class="panel" ng-show="tab === 2">
+      <span>TAB 2</span>
 
-      <div class="comboboxSelector">
-        <select class="form-control color">
-          <option>Pokaż wszystkie</option>
-          <option ng-repeat="busStops in busStops">{{busStops.bus}}</option>
-        </select>
-        <button class="btn btn-primary btn-selector">Filtruj</button>
-      </div>
+    </div>
+    <div class="panel" ng-show="tab === 3">
+      <span>TAB 3</span>
 
-      <div class="busStopAccordion">
-        <uib-accordion close-others="oneAtATime">
-          <uib-accordion-group ng-repeat="busStops in busStops" heading={{busStops.name}}>
-            <table class="table table-striped col-lg-12 table-stops">
-              <tr>
-                <td class="col-line-no-header border background-color">Numer linii</td>
-                <td class="col-departures col-departures-header border background-color">Godziny odjazdu</td>
-              </tr>
-              <tr>
-                <td class="col-line-no border">
-                  <h3><span class="label label-primary">{{busStops.bus}}</span></h3>
-                  <h4><span class="label label-primary">{{busStops.destination}}</span></h4>
-                </td>
-                <td class="col-departures border">
-                  <span class="departure-span">{{busStops.departures}}</span>
-                 </td>
-              </tr>
+    </div>
+    <div class="panel" ng-show="tab === 4">
+      <div ng-controller="busStopAccordion" class="container-fluid favorites">
+        <div class="comboboxSelector">
+          <select class="form-control color">
+            <option ng-repeat="busStops in busStops">{{busStops.name}}</option>
+          </select>
+          <button class="btn btn-primary btn-selector">Dodaj przystanek</button>
+        </div>
 
+        <div class="comboboxSelector">
+          <select class="form-control color">
+            <option>Pokaż wszystkie</option>
+            <option ng-repeat="busStops in busStops">{{busStops.bus}}</option>
+          </select>
+          <button class="btn btn-primary btn-selector">Filtruj</button>
+        </div>
 
-            </table>
-          </uib-accordion-group>
-        </uib-accordion>
+        <div class="busStopAccordion">
+          <uib-accordion close-others="oneAtATime">
+            <uib-accordion-group ng-repeat="busStops in busStops" heading={{busStops.name}}>
+              <table class="table table-striped col-lg-12 table-stops">
+                <tr>
+                  <td class="col-line-no-header border background-color">Numer linii</td>
+                  <td class="col-departures col-departures-header border background-color">Godziny odjazdu</td>
+                </tr>
+                <tr>
+                  <td class="col-line-no border">
+                    <h3><span class="label label-primary">{{busStops.bus}}</span></h3>
+                    <h4><span class="label label-primary">{{busStops.destination}}</span></h4>
+                  </td>
+                  <td class="col-departures border">
+                    <span class="departure-span">{{busStops.departures}}</span>
+                  </td>
+                </tr>
+              </table>
+            </uib-accordion-group>
+          </uib-accordion>
+        </div>
       </div>
     </div>
   </div>
