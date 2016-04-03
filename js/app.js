@@ -10,18 +10,84 @@ angular.module('transportApp')
 angular.module('transportApp').controller('busStopAccordion', function ($scope) {
   $scope.oneAtATime = true;
 
-  $scope.favoriteBusStops = [
+  $scope.busStops = [
     {
-      name: 'Buraczana',
-      bus: '145',
-      destination: 'Karwiny szkoła',
-      departures: ['0808', '0838', '0908']
+      name: 'Fiołkowa',
+      bus: [
+        {
+          line: '145',
+          destination: 'Buraczana',
+          departures: ['0800', '0830']
+        },
+        {
+          line: '160',
+          destination: 'Słonecza',
+          departures: ['0807', '0837']
+        }
+      ]
     },
     {
-      name: 'Strzelców',
-      bus: '125',
-      destination: 'Źródło Marii',
-      departures: ['0805', '0835', '0905']
+      name: 'Buraczana',
+      bus: [
+        {
+          line: '145',
+          destination: 'Fiołkowa',
+          departures: ['0805', '0835']
+        },
+        {
+          line: '160',
+          destination: 'Słonecza',
+          departures: ['0809', '0840']
+        }
+      ]
+    },
+    {
+      name: 'Słoneczna',
+      bus: [
+        {
+          line: '145',
+          destination: 'Fiołkowa',
+          departures: ['0805', '0835']
+        },
+        {
+          line: '160',
+          destination: 'Słonecza',
+          departures: ['0809', '0840']
+        }
+      ]
+    },
+    {
+      name: 'Gdańska',
+      bus: [
+        {
+          line: '145',
+          destination: 'Fiołkowa',
+          departures: ['0805', '0835']
+        },
+        {
+          line: '160',
+          destination: 'Słonecza',
+          departures: ['0809', '0840']
+        }
+      ]
+    }
+  ];
+
+  $scope.favoriteBusStops = [
+    {
+      name: 'Fiołkowa',
+      bus: [
+        {
+          line: '145',
+          destination: 'Buraczana',
+          departures: ['0800', '0830']
+        },
+        {
+          line: '160',
+          destination: 'Słonecza',
+          departures: ['0807', '0837']
+        }
+      ]
     }
   ];
 });
@@ -31,17 +97,18 @@ angular.module('transportApp')
 
 function addToFavorites($scope){
   $scope.addBusStopToFavorites = function(){
-    $scope.favoriteBusStops.push(new NewBusStop("Przykład app.js l:34","","",""));
-    console.log("pushed");
+    var selectedBusStopIndex = $("select[name='selectedBusStop'] option:selected").index();
+    $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
   };
-
-  function NewBusStop(name, bus, destination, departures){
-    this.name = name;
-    this.bus = bus;
-    this.destination = destination;
-    this.departures = departures;
-  }
 }
+
+//  function NewBusStop(name, bus, destination, departures){
+//    this.name = name;
+//    this.bus = bus;
+//    this.destination = destination;
+//    this.departures = departures;
+//  }
+//}
 
 //angular.module('transportApp').controller('panelController', function($scope){
 //  $scope.tab = 4;

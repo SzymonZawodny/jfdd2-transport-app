@@ -120,35 +120,39 @@
       <h3 class="title">Ulubione przystanki</h3>
       <div ng-controller="busStopAccordion" class="container-fluid favorites">
         <div class="comboboxSelector">
-          <select class="form-control color">
-            <option ng-repeat="favoriteBusStops in favoriteBusStops">{{favoriteBusStops.name}}</option>
+          <select name="selectedBusStop" class="form-control color" id="selectedBusStop">
+            <option ng-repeat="busStops in busStops">
+              {{busStops.name}}</option>
           </select>
-          <button ng-controller="addToFavorites" ng-click="addBusStopToFavorites()" class="btn btn-primary btn-selector">Dodaj przystanek</button>
+          <button ng-controller="addToFavorites" ng-click="addBusStopToFavorites()"
+                  class="btn btn-primary btn-selector">Dodaj przystanek</button>
         </div>
 
         <div class="comboboxSelector">
           <select class="form-control color">
             <option>Pokaż wszystkie</option>
-            <option ng-repeat="favoriteBusStops in favoriteBusStops">{{favoriteBusStops.bus}}</option>
+            <option ng-repeat="favoriteBusStops in favoriteBusStops">{{favoriteBusStops.bus.line}}</option>
           </select>
           <button class="btn btn-primary btn-selector">Filtruj</button>
         </div>
 
         <div class="busStopAccordion">
           <uib-accordion close-others="oneAtATime">
-            <uib-accordion-group ng-repeat="favoriteBusStops in favoriteBusStops" heading={{favoriteBusStops.name}}>
+            <uib-accordion-group ng-repeat="favoriteBusStops in favoriteBusStops"
+                                 heading={{favoriteBusStops.name}}>
               <table class="table table-striped col-lg-12 table-stops">
                 <tr>
                   <td class="col-line-no-header border background-color">Numer linii</td>
                   <td class="col-departures col-departures-header border background-color">Godziny odjazdu</td>
                 </tr>
-                <tr>
-                  <td class="col-line-no border">
-                    <h3><span class="label label-primary">{{favoriteBusStops.bus}}</span></h3>
-                    <h4><span class="label label-primary">{{favoriteBusStops.destination}}</span></h4>
+                <tr ng-repeat="bus in favoriteBusStops.bus">
+                  <td  class="col-line-no border">
+                    <h3><span class="label label-primary">{{bus.line}}</span></h3>
+                    <h4><span class="label label-primary">{{bus.destination}}</span></h4>
                   </td>
                   <td class="col-departures border">
-                    <span ng-repeat="departure in favoriteBusStops.departures" class="departure-span">{{departure}}</span>
+                    <span ng-repeat="departures in favoriteBusStops.bus"
+                          class="departure-span">{{departures.departures}}</span>
                   </td>
                 </tr>
               </table>
