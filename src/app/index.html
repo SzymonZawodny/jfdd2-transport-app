@@ -11,6 +11,7 @@
   <link href="styles/index.css" rel="stylesheet">
   <link href="styles/frame.css" rel="stylesheet">
   <link href="styles/favorites.css" rel="stylesheet">
+  <link href="styles/busStops.css" rel="stylesheet">
 </head>
 <body>
 <!--TOP BAR-->
@@ -104,20 +105,29 @@
   <!--SIDEBAR END-->
   <!-- CONTENT -->
   <div id="page-content-wrapper">
-    <div class="panel" ng-show="tab === 1">
-      <span>TAB 1</span>
+    <div class="panel container-fluid" ng-controller="busStopAccordion" ng-show="tab === 1">
+      <h1 class="stopsHeader">Lista przystanków</h1>
+      <ul class="busStopScrollList col-md-4">
+        <li ng-repeat="busStop in busStops">{{busStop.name}}</li>
+
+      </ul>
+
+      <div class="busStopInfo col-sm-8">
+
+
+      </div>
 
     </div>
-    <div class="panel" ng-show="tab === 2">
+    <div class="panel container-fluid" ng-show="tab === 2">
       <span>TAB 2</span>
 
     </div>
-    <div class="panel" ng-show="tab === 3">
+    <div class="panel container-fluid" ng-show="tab === 3">
       <span>TAB 3</span>
 
     </div>
 
-    <div class="panel" ng-show="tab === 4">
+    <div class="panel container-fluid" ng-show="tab === 4">
       <h3 class="title">Ulubione przystanki</h3>
       <div ng-controller="busStopAccordion" class="container-fluid favorites">
         <div class="comboboxSelector">

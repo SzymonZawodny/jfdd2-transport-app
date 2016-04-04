@@ -1,0 +1,31 @@
+.busStopScrollList {
+  border: solid 4px;
+  border-color: #337ab7;
+  height: 250px;
+  width:18%;
+  min-width:110px ;
+  overflow:hidden; overflow-y:scroll;
+  margin: 35px 35px 35px 35px;
+  border-radius: 5px;
+}
+.busStopScrollList li:hover {
+  background-color: #337ab7;
+}
+
+.busStopInfo{
+  border: solid 4px;
+  border-color: #337ab7;
+  margin-top: 35px;
+  height: 250px;
+  border-radius: 5px;
+
+}
+
+.stopsHeader{
+  color: #337ab7;
+  margin-left: 35px;
+  font-size: 40px;
+  width: auto;
+  text-align: center;
+  font-weight: bold;
+}
