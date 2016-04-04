@@ -164,6 +164,32 @@
     </div>
   </div>
   <!-- CONTENT END-->
+  <!-- MODAL -->
+  <div ng-controller="ModalDemoCtrl">
+    <script type="text/ng-template" id="myModalContent.html">
+      <div class="modal-header">
+        <h3 class="modal-title">I'm a modal!</h3>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li ng-repeat="item in items">
+            <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+          </li>
+
+          <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      </div>
+    </script>
+    <button type="button" class="btn btn-default" ng-click="open('sm')">Login</button>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+  </div>
+  <!-- MODAL END-->
 </div>
 <script src="../../src/app/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../../src/app/bower_components/angular/angular.min.js"></script>
@@ -172,5 +198,6 @@
 <script src="../../src/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="../../src/app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="app.js"></script>
+<script src="modal.js"></script>
 </body>
 </html>

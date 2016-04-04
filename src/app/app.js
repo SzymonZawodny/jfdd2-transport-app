@@ -1,4 +1,4 @@
-var app = angular.module('transportApp', ['ngAnimate', 'ui.bootstrap']);
+  var app = angular.module('transportApp', ['ngAnimate', 'ui.bootstrap']);
 
 //hamburger menu
 app.controller('collapseMenu', function ($scope) {
