@@ -1,0 +1,158 @@
+/*NAVBAR*/
+
+.navbar {
+z-index: 100;
+width: 100%;
+border-radius: 0;
+}
+
+.navbar .well.well-lg.collapseMenu {
+  background-color: #337ab7;
+}
+.navbar .fixed-brand {
+  width: auto;
+}
+
+.navbar .logo-half {
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  -o-transform: scale(0.7);
+  transform: scale(0.7);
+  position: relative;
+  top: -15px;
+}
+
+.navbar .collapseMenu {
+  width: 200px;
+  position: absolute;
+  right: 15px;
+  top: 22px;
+  font: 14px Arial;
+}
+.navbar-toggle {
+  background-color: #337ab7;
+  width: 40px;
+  color: #FFF;
+  transition: all 300ms ease-out;
+}
+
+.navbar-toggle:hover{
+  transform: rotateZ(180deg);
+}
+
+.navbar .button-favorites{
+  margin-top: 5px;
+}
+
+/* SIDEBAR */
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+  overflow: scroll;
+}
+
+#sidebar-wrapper {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 0;
+  height: 100%;
+  margin-left: -50px;
+  overflow-y: auto;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background-color: #337ab7;
+  box-shadow: 5px 2px 3px 0 rgba(0, 0, 0, 0.55);
+  font: 13px Arial;
+  text-align: center;
+  padding-top: 52px;
+}
+
+#sidebar-wrapper button {
+  box-shadow: 0 0 10px 0 #000;
+  border-radius: 10px;
+  margin: 10px auto;
+  background-color: #f8f8f8;
+  transition: all 600ms ease-out;
+  border: solid 2px #000;
+}
+
+#sidebar-wrapper button:hover {
+  background-color: #2e6da4;
+  color: #FFF;
+  border-color: #fff;
+}
+
+#sidebar-wrapper .active{
+  transform: rotateY(180deg);
+  background-color: #2e6da4;
+  color: #FFF;
+  border-color: #fff;
+}
+.no-margin {
+  margin: 0;
+}
+
+.button-topbar {
+  width: 155px;
+  text-align: left;
+  transition: all 600ms ease-out;
+}
+
+.button-topbar:hover {
+  background-color: #2e6da4;
+  opacity: 0.8;
+  color: #FFF;
+}
+.button-topbar.active {
+  background-color: #2e6da4;
+  opacity: 0.8;
+  color: #FFF;
+}
+
+/*MEDIA QUERIES*/
+@media (min-width: 768px) {
+  #wrapper {
+    padding-left: 80px;
+  }
+  .button-favorites{
+    display:none;
+  }
+  .collapseMenu {
+    display: none;
+  }
+
+  .fixed-brand {
+    width: 100px;
+  }
+
+  #sidebar-wrapper {
+    width: 80px;
+  }
+
+  #page-content-wrapper {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+}
+
+#page-content-wrapper {
+  position: absolute;
+  padding: 15px;
+  width: 90%;
+  overflow-x: hidden;
+}
