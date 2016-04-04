@@ -1,13 +1,48 @@
 (function () {
-  var app = angular.module('transportApp', ['ngAnimate', 'ui.bootstrap']);
-
-//hamburger menu
-  app.controller('collapseMenu', function ($scope) {
-    $scope.isCollapsed = true;
+  var app = angular.module('transportApp',
+    ['ngAnimate', 'ui.bootstrap', 'LocalStorageModule'])
+    .controller('collapseMenu', hamburgerMenuSlide)
+    .controller('addToFavorites', addToFavorites)
+    .controller('panelController', highlightMenuItems)
+    .config(function (localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('transportApp');
   });
 
 
-  app.controller('busStopAccordion', function ($scope) {
+
+//hamburger menu
+  function hamburgerMenuSlide($scope) {
+    $scope.isCollapsed = true;
+  }
+
+  function addToFavorites($scope, localStorageService) {
+    $scope.addBusStopToFavorites = function () {
+      var selectedBusStopIndex = $("select[name='selectedBusStop'] option:selected").index();
+      $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
+
+      function submit(key, val) {
+        return localStorageService.set(key, val);
+      }
+
+      submit('favoriteBusStop', $scope.favoriteBusStops);
+    };
+  }
+
+  // highlight menu elements
+  function highlightMenuItems($scope) {
+    $scope.tab = 4;
+
+    $scope.selectTab = function (setTab) {
+      $scope.tab = setTab;
+    };
+
+    $scope.ifTabSelected = function (checkTab) {
+      return $scope.tab === checkTab;
+    }
+  }
+
+
+  app.controller('busStopAccordion', function ($scope, localStorageService) {
     $scope.oneAtATime = true;
 
     $scope.busStops = [
@@ -73,31 +108,11 @@
       }
     ];
 
-    $scope.favoriteBusStops = [];
-    //$scope.favoriteBusStops = localStorage.getItem("favoritesBusStopsArray");
-  });
-
-  app.controller('addToFavorites', addToFavorites);
-
-  function addToFavorites($scope) {
-    $scope.addBusStopToFavorites = function () {
-      var selectedBusStopIndex = $("select[name='selectedBusStop'] option:selected").index();
-      $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
-      //localStorage.setItem("favoritesBusStopsArray", $scope.favoriteBusStops);
-    };
-  }
-
-// highlight menu elements
-  app.controller('panelController', function ($scope) {
-    $scope.tab = 4;
-
-    $scope.selectTab = function (setTab) {
-      $scope.tab = setTab;
-    };
-
-    $scope.ifTabSelected = function (checkTab) {
-      return $scope.tab === checkTab;
+    function getItem(key) {
+      return localStorageService.get(key);
     }
+
+    $scope.favoriteBusStops = getItem('favoriteBusStop');
   });
 
 }());
