@@ -15,16 +15,11 @@
     $scope.isCollapsed = true;
   }
 
-  function addToFavorites($scope, localStorageService) {
+  function addToFavorites($scope) {
     $scope.addBusStopToFavorites = function () {
       var selectedBusStopIndex = $("select[name='selectedBusStop'] option:selected").index();
       $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
-
-      function submit(key, val) {
-        return localStorageService.set(key, val);
-      }
-
-      submit('favoriteBusStop', $scope.favoriteBusStops);
+      $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
     };
   }
 
@@ -44,6 +39,10 @@
 
   app.controller('busStopAccordion', function ($scope, localStorageService) {
     $scope.oneAtATime = true;
+
+    $scope.submit=function(key, val) {
+      return localStorageService.set(key, val);
+    };
 
     $scope.busStops = [
       {
@@ -113,6 +112,16 @@
     }
 
     $scope.favoriteBusStops = getItem('favoriteBusStop');
+
+    $scope.removeFavoriteBusStop = function (idx, e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      $scope.favoriteBusStops.splice(idx, 1);
+      $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
+    };
   });
 
 }());
