@@ -72,23 +72,8 @@ app.controller('busStopAccordion', function ($scope) {
     }
   ];
 
-  $scope.favoriteBusStops = [
-    {
-      name: 'Fiołkowa',
-      bus: [
-        {
-          line: '145',
-          destination: 'Buraczana',
-          departures: ['0800', '0830']
-        },
-        {
-          line: '160',
-          destination: 'Słonecza',
-          departures: ['0807', '0837']
-        }
-      ]
-    }
-  ];
+  $scope.favoriteBusStops = [];
+  //$scope.favoriteBusStops = localStorage.getItem("favoritesBusStopsArray");
 });
 
 app.controller('addToFavorites', addToFavorites);
@@ -97,25 +82,19 @@ function addToFavorites($scope){
   $scope.addBusStopToFavorites = function(){
     var selectedBusStopIndex = $("select[name='selectedBusStop'] option:selected").index();
     $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
+    //localStorage.setItem("favoritesBusStopsArray", $scope.favoriteBusStops);
   };
 }
 
-//  function NewBusStop(name, bus, destination, departures){
-//    this.name = name;
-//    this.bus = bus;
-//    this.destination = destination;
-//    this.departures = departures;
-//  }
-//}
+// highlight menu elements
+app.controller('panelController', function($scope){
+  $scope.tab = 4;
 
-//angular.module('transportApp').controller('panelController', function($scope){
-//  $scope.tab = 4;
-//
-//  $scope.selectTab = function(setTab) {
-//    $scope.tab = setTab;
-//  };
-//
-//  $scope.isSelected = function(checkTab){
-//    return $scope.tab === checkTab;
-//  }
-//});
+  $scope.selectTab = function(setTab) {
+    $scope.tab = setTab;
+  };
+
+  $scope.ifTabSelected = function(checkTab){
+    return $scope.tab === checkTab;
+  }
+});
