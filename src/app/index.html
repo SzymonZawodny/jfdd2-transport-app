@@ -132,7 +132,7 @@
         <div class="comboboxSelector">
           <select class="form-control color">
             <option>Pokaż wszystkie</option>
-            <option ng-repeat="favoriteBusStops in favoriteBusStops">{{favoriteBusStops.bus.line}}</option>
+            <option ng-repeat="line in busLines">{{line}}</option>
           </select>
           <button class="btn btn-primary btn-selector">Filtruj</button>
         </div>

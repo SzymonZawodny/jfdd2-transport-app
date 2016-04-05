@@ -113,6 +113,18 @@
 
     $scope.favoriteBusStops = getItem('favoriteBusStop');
 
+    $scope.busLines = $scope.favoriteBusStops.map(function (stop) {
+      return stop.bus.map(function (bus) {
+        return bus.line;
+      });
+    }).reduce(function (a, b) {
+      return a.concat(b);
+    }, []).filter(onlyUnique);
+
+    function onlyUnique(value, index, self) {
+      return self.indexOf(value) === index;
+    }
+
     $scope.removeFavoriteBusStop = function (idx, e) {
       if (e) {
         e.preventDefault();
