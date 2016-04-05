@@ -8,14 +8,16 @@
     localStorageServiceProvider.setPrefix('transportApp');
   });
 
-
-
 //hamburger menu
   function hamburgerMenuSlide($scope) {
     $scope.isCollapsed = true;
   }
 
   function addToFavorites($scope) {
+    if (!$scope.favoriteBusStops){
+      $scope.favoriteBusStops =[];
+    }
+
     $scope.addBusStopToFavorites = function () {
       var selectedBusStopIndex = $("select[name='selectedBusStop'] option:selected").index();
       $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
@@ -110,20 +112,22 @@
     function getItem(key) {
       return localStorageService.get(key);
     }
-
     $scope.favoriteBusStops = getItem('favoriteBusStop');
 
-    $scope.busLines = $scope.favoriteBusStops.map(function (stop) {
-      return stop.bus.map(function (bus) {
-        return bus.line;
-      });
-    }).reduce(function (a, b) {
-      return a.concat(b);
-    }, []).filter(onlyUnique);
+    if ($scope.favoriteBusStops){
+      $scope.busLines = $scope.favoriteBusStops.map(function (stop) {
+        return stop.bus.map(function (bus) {
+          return bus.line;
+        });
+      }).reduce(function (a, b) {
+        return a.concat(b);
+      }, []).filter(onlyUnique);
 
-    function onlyUnique(value, index, self) {
-      return self.indexOf(value) === index;
+      function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+      }
     }
+
 
     $scope.removeFavoriteBusStop = function (idx, e) {
       if (e) {
