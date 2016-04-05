@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="transportApp" class="no-js" lang="en">
+<html ng-app="transportApp" class="no-js" lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@
 <nav class="navbar navbar-default no-margin">
   <div class="navbar-header fixed-brand">
     <a class="navbar-brand" href="#"><img class="logo-half" src="images/others/koliber-logo.png"></a>
-    <div class="container" ng-controller="collapseMenu">
+    <div class="container">
       <button ng-class="{active:ifTabSelected(4)}"
               ng-click=selectTab(4) type="button"
               class="btn btn-default btn-lg button-topbar button-favorites" aria-label="Left Align">
@@ -64,8 +64,8 @@
   </div>
 </nav>
 <!--TOP BAR END-->
-<!--SIDEBAR-->
 <div id="wrapper">
+  <!--SIDEBAR-->
   <div id="sidebar-wrapper">
 
     <button ng-class="{active:ifTabSelected(1)}"
@@ -116,17 +116,18 @@
       <span>TAB 3</span>
 
     </div>
-
     <div class="panel" ng-show=ifTabSelected(4)>
       <h3 class="title">Ulubione przystanki</h3>
-      <div ng-controller="busStopAccordion" class="container-fluid favorites">
+      <div ng-controller="favouritesCtrl" class="container-fluid favorites">
         <div class="comboboxSelector">
           <select name="selectedBusStop" class="form-control color" id="selectedBusStop">
             <option ng-repeat="busStops in busStops">
               {{busStops.name}}</option>
           </select>
-          <button ng-controller="addToFavorites" ng-click="addBusStopToFavorites()"
-                  class="btn btn-primary btn-selector">Dodaj przystanek</button>
+          <button ng-click="addBusStopToFavorites()"
+                  class="btn btn-primary btn-selector">
+            Dodaj przystanek
+          </button>
         </div>
 
         <div class="comboboxSelector">
@@ -178,5 +179,6 @@
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
 <script src="app.js"></script>
+<script src="busStopsService.js"></script>
 </body>
 </html>
