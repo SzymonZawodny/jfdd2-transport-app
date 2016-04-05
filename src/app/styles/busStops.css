@@ -3,13 +3,17 @@
   border-color: #337ab7;
   height: 250px;
   width:18%;
-  min-width:110px ;
+  min-width:120px ;
   overflow:hidden; overflow-y:scroll;
   margin: 35px 35px 35px 35px;
   border-radius: 5px;
+  color: #337ab7;
+  font-size: 17px;
 }
 .busStopScrollList li:hover {
   background-color: #337ab7;
+  color: white;
+  font-weight: bold;
 }
 
 .busStopInfo{
@@ -28,4 +32,9 @@
   width: auto;
   text-align: center;
   font-weight: bold;
+}
+
+.busStopsFiltr{
+  color: #337ab7;
+  margin-left: 35px ;
 }
