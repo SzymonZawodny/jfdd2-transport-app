@@ -26,11 +26,6 @@
             line: '145',
             destination: 'Fiołkowa',
             departures: ['0805', '0835']
-          },
-          {
-            line: '160',
-            destination: 'Słonecza',
-            departures: ['0809', '0840']
           }
         ]
       },
