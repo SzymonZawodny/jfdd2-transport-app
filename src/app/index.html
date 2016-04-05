@@ -162,8 +162,11 @@
                     <h4><span class="label label-primary">{{bus.destination}}</span></h4>
                   </td>
                   <td class="col-departures border">
-                    <span ng-repeat="departure in bus.departures"
-                          class="departure-span">{{departure}}</span>
+                    <div>
+                      <span ng-repeat="departure in bus.departures"
+                            class="departure-span">{{departure}}</span>
+                    </div>
+
                   </td>
                 </tr>
               </table>

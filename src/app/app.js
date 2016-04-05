@@ -2,7 +2,6 @@
   angular.module('transportApp',
     ['ngAnimate', 'ui.bootstrap', 'LocalStorageModule'])
     .controller('panelController', panelController)
-    .controller('addToFavorites', addToFavorites)
     .controller('favouritesCtrl', favouritesCtrl)
     .config(function (localStorageServiceProvider) {
       localStorageServiceProvider.setPrefix('transportApp');
@@ -20,10 +19,6 @@
     $scope.ifTabSelected = function (checkTab) {
       return $scope.tab === checkTab;
     }
-  }
-
-  function addToFavorites($scope) {
-
   }
 
   function favouritesCtrl($scope, localStorageService, busStopService) {
@@ -94,12 +89,17 @@
 
     function filterFavouritesByLines() {
       var selectedLine = $('#selectedLine').val();
-      $scope.filteredBusStops = $scope.favoriteBusStops.filter(function (busStop) {
-        return busStop.bus.some(function (bus) {
-          $scope.accordion = 1;
-          return bus.line === selectedLine;
-        })
-      });
+      if (selectedLine === 'Pokaż wszystkie') {
+        return $scope.accordion = 0;
+      }
+      else{
+        $scope.filteredBusStops = $scope.favoriteBusStops.filter(function (busStop) {
+          return busStop.bus.some(function (bus) {
+            $scope.accordion = 1;
+            return bus.line === selectedLine;
+          })
+        });
+      }
     }
   }
 
