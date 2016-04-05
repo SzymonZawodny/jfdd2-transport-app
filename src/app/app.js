@@ -45,18 +45,22 @@
     function addBusStopToFavorites() {
       var selectedBusStopIndex = $("select[name='selectedBusStop'] option:selected").index();
       if ($scope.favoriteBusStops.length===0){
-        $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
-        $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
-        $scope.busLines = uniqueLines();
+        updateFavouriteBusStops();
         return;
       }
 
-      for (var i = 0; i < $scope.favoriteBusStops.length; i++) {
-        if ($('#selectedBusStop').val().trim() !== $scope.favoriteBusStops[i].name) {
-          $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
-          $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
-          $scope.busLines = uniqueLines();
-        }
+      var selected = $('#selectedBusStop').val().trim();
+      var favouriteBusStopsNames = $scope.favoriteBusStops.map(function (stop){
+        return stop.name;
+      });
+      if(favouriteBusStopsNames.indexOf(selected)===-1){
+        updateFavouriteBusStops();
+      }
+
+      function updateFavouriteBusStops(){
+        $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
+        $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
+        $scope.busLines = uniqueLines();
       }
     }
 
