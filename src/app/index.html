@@ -106,15 +106,33 @@
   <!--SIDEBAR END-->
   <!-- CONTENT -->
   <div id="page-content-wrapper">
-    <div class="panel container-fluid" ng-show=ifTabSelected(1)>
+    <div class="panel container-fluid" ng-show=ifTabSelected(1) ng-controller="busStopsController">
       <h1 class="stopsHeader">Lista przystanków</h1>
       <ul class="busStopScrollList col-md-4">
-        <li ng-click="showDetails(busStop)" ng-repeat="busStop in busStops">{{busStop.name}}</li>
+        <li ng-click="showBusStopDetail(busStop)" ng-repeat="busStop in busStops">{{busStop.name}}</li>
 
       </ul>
 
       <div class="busStopInfo col-sm-8">
-        {{busDetails}}
+        <table class="table table-striped table-stops">
+          <tr>
+            <td class="col-line-no-header border background-color">Numer linii</td>
+            <td class="col-departures col-departures-header border background-color">Godziny odjazdu</td>
+          </tr>
+          <tr ng-repeat="bus in busStop.bus">
+            <td class="col-line-no border">
+              <h3><span class="label label-primary">{{bus.line}}</span></h3>
+              <h4><span class="label label-primary">{{bus.destination}}</span></h4>
+            </td>
+            <td class="col-departures border">
+              <div>
+                      <span ng-repeat="departure in bus.departures"
+                            class="departure-span">{{departure}}</span>
+              </div>
+
+            </td>
+          </tr>
+        </table>
 
       </div>
       <div class="busStopsFiltr col-md-12">
