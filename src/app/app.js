@@ -89,6 +89,11 @@ app.controller('busStopAccordion', function ($scope) {
       ]
     }
   ];
+
+  $scope.showDetails = function(busStop){
+    $scope.busDetails = busStop
+
+  }
 });
 
 app.controller('addToFavorites', addToFavorites);
@@ -99,6 +104,7 @@ function addToFavorites($scope){
     $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
   };
 }
+
 
 //  function NewBusStop(name, bus, destination, departures){
 //    this.name = name;

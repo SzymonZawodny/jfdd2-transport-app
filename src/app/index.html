@@ -108,12 +108,12 @@
     <div class="panel container-fluid" ng-controller="busStopAccordion" ng-show="tab === 1">
       <h1 class="stopsHeader">Lista przystanków</h1>
       <ul class="busStopScrollList col-md-4">
-        <li ng-repeat="busStop in busStops">{{busStop.name}}</li>
+        <li ng-click="showDetails(busStop)" ng-repeat="busStop in busStops">{{busStop.name}}</li>
 
       </ul>
 
       <div class="busStopInfo col-sm-8">
-
+        {{busDetails}}
 
       </div>
       <div class="busStopsFiltr col-md-12">
