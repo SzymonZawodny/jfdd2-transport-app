@@ -106,9 +106,7 @@
   <!--SIDEBAR END-->
   <!-- CONTENT -->
   <div id="page-content-wrapper">
-    <div class="panel" ng-show=ifTabSelected(1)>
-      <span>TAB 1</span>
-    <div class="panel container-fluid" ng-controller="busStopAccordion" ng-show="tab === 1">
+    <div class="panel container-fluid" ng-show=ifTabSelected(1)>
       <h1 class="stopsHeader">Lista przystanków</h1>
       <ul class="busStopScrollList col-md-4">
         <li ng-click="showDetails(busStop)" ng-repeat="busStop in busStops">{{busStop.name}}</li>
@@ -217,7 +215,7 @@
         </div>
       </div>
     </div>
-  </div>
+
   <!-- CONTENT END-->
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
