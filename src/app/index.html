@@ -169,9 +169,29 @@
   </div>
   <!--CONTENT END-->
   <!--MODAL-->
-
-  <!--MODAL END-->
 </div>
+<div ng-controller="ModalDemoCtrl">
+  <script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+      <h3 class="modal-title">I'm a modal!</h3>
+    </div>
+    <div class="modal-body">
+      <ul>
+        <li ng-repeat="item in items">
+          <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+        </li>
+      </ul>
+      Selected: <b>{{ selected.item }}</b>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+  </script>
+  <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
+</div>
+<!--MODAL END-->
+
 <script src="../../src/app/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../../src/app/bower_components/angular/angular.min.js"></script>
 <script src="../../src/app/bower_components/angular-animate/angular-animate.min.js"></script>
@@ -180,8 +200,9 @@
 <script src="../../src/app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="app.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<!--<script src="../../src/app/modal.js"></script>-->
+<script src="../../src/app/modal.js"></script>
 <!--<script src="../../src/app/googlePlus.html"></script>-->
+<--SIGN-IN GOOGLE PLUS-->
 <script>
   function onSignIn(googleUser) {
     // Useful data for your client-side scripts:
@@ -210,5 +231,6 @@
     });
   }
 </script>
+<--SIGN-IN GOOGLE PLUS END-->
 </body>
 </html>

@@ -1,8 +1,6 @@
-angular.module('transportApp').controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
+angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
 
-  $scope.items = ['Loguj przez Google+'];
-  //$scope.items = ['Loguj przez Google+'];
-  //<div class="g-signin2" data-onsuccess="onSignIn"></div>
+  $scope.items = ['item1'];
 
   $scope.animationsEnabled = true;
 
@@ -19,13 +17,24 @@ angular.module('transportApp').controller('ModalDemoCtrl', function ($scope, $ui
         }
       }
     });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
   };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
 });
 
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
 
-angular.module('transportApp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+angular.module('Workspace').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
 
   $scope.items = items;
   $scope.selected = {
