@@ -1,121 +1,106 @@
-var app = angular.module('transportApp', ['ngAnimate', 'ui.bootstrap']);
+(function () {
+  angular.module('transportApp',
+    ['ngAnimate', 'ui.bootstrap', 'LocalStorageModule'])
+    .controller('panelController', panelController)
+    .controller('favouritesCtrl', favouritesCtrl)
+    .config(function (localStorageServiceProvider) {
+      localStorageServiceProvider.setPrefix('transportApp');
+    });
 
-//hamburger menu
-app.controller('collapseMenu', function ($scope) {
+  function panelController($scope) {
+    $scope.accordion = 0;
+    $scope.tab = 4;
     $scope.isCollapsed = true;
-  });
 
+    $scope.selectTab = function (setTab) {
+      $scope.tab = setTab;
+    };
 
-app.controller('busStopAccordion', function ($scope) {
-  $scope.oneAtATime = true;
-
-  $scope.busStops = [
-    {
-      name: 'Fiołkowa',
-      bus: [
-        {
-          line: '145',
-          destination: 'Buraczana',
-          departures: ['0800', '0830']
-        },
-        {
-          line: '160',
-          destination: 'Słonecza',
-          departures: ['0807', '0837']
-        }
-      ]
-    },
-    {
-      name: 'Buraczana',
-      bus: [
-        {
-          line: '145',
-          destination: 'Fiołkowa',
-          departures: ['0805', '0835']
-        },
-        {
-          line: '160',
-          destination: 'Słonecza',
-          departures: ['0809', '0840']
-        }
-      ]
-    },
-    {
-      name: 'Słoneczna',
-      bus: [
-        {
-          line: '145',
-          destination: 'Fiołkowa',
-          departures: ['0805', '0835']
-        },
-        {
-          line: '160',
-          destination: 'Słonecza',
-          departures: ['0809', '0840']
-        }
-      ]
-    },
-    {
-      name: 'Gdańska',
-      bus: [
-        {
-          line: '145',
-          destination: 'Fiołkowa',
-          departures: ['0805', '0835']
-        },
-        {
-          line: '160',
-          destination: 'Słonecza',
-          departures: ['0809', '0840']
-        }
-      ]
+    $scope.ifTabSelected = function (checkTab) {
+      return $scope.tab === checkTab;
     }
-  ];
+  }
 
-  $scope.favoriteBusStops = [
-    {
-      name: 'Fiołkowa',
-      bus: [
-        {
-          line: '145',
-          destination: 'Buraczana',
-          departures: ['0800', '0830']
-        },
-        {
-          line: '160',
-          destination: 'Słonecza',
-          departures: ['0807', '0837']
-        }
-      ]
+  function favouritesCtrl($scope, localStorageService, busStopService) {
+    $scope.oneAtATime = true;
+
+    //symulacja serwera
+    $scope.busStops = busStopService.getStops();
+    $scope.favoriteBusStops = localStorageService.get('favoriteBusStop') || [];
+    $scope.busLines = uniqueLines();
+
+    //funkcje do widoku
+    $scope.submit = submit;
+    $scope.removeFavoriteBusStop = removeFavourite;
+    $scope.addBusStopToFavorites = addBusStopToFavorites;
+    $scope.filterFavouritesByLines = filterFavouritesByLines;
+
+    function submit(key, val) {
+      return localStorageService.set(key, val);
     }
-  ];
-});
 
-app.controller('addToFavorites', addToFavorites);
+    function addBusStopToFavorites() {
+      var selectedBusStopIndex = $("select[name='selectedBusStop'] option:selected").index();
+      if ($scope.favoriteBusStops.length === 0) {
+        updateFavouriteBusStops();
+        return;
+      }
 
-function addToFavorites($scope){
-  $scope.addBusStopToFavorites = function(){
-    var selectedBusStopIndex = $("select[name='selectedBusStop'] option:selected").index();
-    $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
-  };
-}
+      var selected = $('#selectedBusStop').val().trim();
+      var favouriteBusStopsNames = $scope.favoriteBusStops.map(function (stop) {
+        return stop.name;
+      });
+      if (favouriteBusStopsNames.indexOf(selected) === -1) {
+        updateFavouriteBusStops();
+      }
 
-//  function NewBusStop(name, bus, destination, departures){
-//    this.name = name;
-//    this.bus = bus;
-//    this.destination = destination;
-//    this.departures = departures;
-//  }
-//}
+      function updateFavouriteBusStops() {
+        $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
+        $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
+        $scope.busLines = uniqueLines();
+      }
+    }
 
-//angular.module('transportApp').controller('panelController', function($scope){
-//  $scope.tab = 4;
-//
-//  $scope.selectTab = function(setTab) {
-//    $scope.tab = setTab;
-//  };
-//
-//  $scope.isSelected = function(checkTab){
-//    return $scope.tab === checkTab;
-//  }
-//});
+    function uniqueLines() {
+      if ($scope.favoriteBusStops) {
+        return $scope.favoriteBusStops.map(function (stop) {
+          return stop.bus.map(function (bus) {
+            return bus.line;
+          });
+        }).reduce(function (a, b) {
+          return a.concat(b);
+        }, []).filter(onlyUnique);
+
+        function onlyUnique(value, index, self) {
+          return self.indexOf(value) === index;
+        }
+      }
+    }
+
+    function removeFavourite(idx, e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      $scope.favoriteBusStops.splice(idx, 1);
+      $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
+      $scope.busLines = uniqueLines();
+    }
+
+    function filterFavouritesByLines() {
+      var selectedLine = $('#selectedLine').val();
+      if (selectedLine === 'Pokaż wszystkie') {
+        return $scope.accordion = 0;
+      }
+      else{
+        $scope.filteredBusStops = $scope.favoriteBusStops.filter(function (busStop) {
+          return busStop.bus.some(function (bus) {
+            $scope.accordion = 1;
+            return bus.line === selectedLine;
+          })
+        });
+      }
+    }
+  }
+
+}());
