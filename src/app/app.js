@@ -3,7 +3,6 @@
     ['ngAnimate', 'ui.bootstrap', 'LocalStorageModule'])
     .controller('panelController', panelController)
     .controller('favouritesCtrl', favouritesCtrl)
-    .controller('lineDetailsModalCtrl', openLineDetailsModal)
     .controller('ModalInstanceCtrl', closeLineDetailsModal)
     .config(function (localStorageServiceProvider) {
       localStorageServiceProvider.setPrefix('transportApp');
@@ -23,7 +22,7 @@
     }
   }
 
-  function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService) {
+  function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService, $uibModal) {
     $scope.oneAtATime = true;
 
     //symulacja serwera
@@ -107,21 +106,20 @@
     }
 
     function getDetails(busLine, busDestination, departureTime, busStopName) {
-      var detailsArray = [busLine, busDestination, departureTime, busStopName];
+      $scope.busDetailsArray = [busLine, busDestination, departureTime, busStopName];
+      console.log($scope.busDetailsArray);
+      openModal();
 
-      console.log(detailsArray);
+      function openModal() {
+        console.log($scope.busDetailsArray);
+        $uibModal.open({
+          animation: true,
+          templateUrl: 'busLineDetailsTemplate.html',
+          controller: 'ModalInstanceCtrl',
+          size: 'sm'
+        });
+      }
     }
-  }
-
-  function openLineDetailsModal($scope, $uibModal) {
-    $scope.open = function (size) {
-      $uibModal.open({
-        animation: true,
-        templateUrl: 'busLineDetailsTemplate.html',
-        controller: 'ModalInstanceCtrl',
-        size: size
-      });
-    };
   }
 
   function closeLineDetailsModal($scope, $uibModalInstance) {
