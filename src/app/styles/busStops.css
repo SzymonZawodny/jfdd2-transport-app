@@ -2,16 +2,17 @@
   border: solid 4px;
   border-color: #337ab7;
   height: 245px;
-  width:18%;
+  width:158px;
   overflow:hidden; overflow-y:scroll;
   border-radius: 5px;
   color: #337ab7;
   font-size: 17px;
   margin-left: 15px;
 }
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .busStopScrollList {
-    min-width: 315px;
+    min-width:94%;
+    font-size: 30px;
   }
 }
 
