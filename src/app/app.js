@@ -104,6 +104,8 @@ app.controller('googlePlusModalCtrl', googlePlusModalCtrl);
 
   function googlePlusModalCtrl($scope, $uibModal){
 
+
+
     $scope.items = ['item1'];
 
     $scope.animationsEnabled = true;
@@ -120,6 +122,23 @@ app.controller('googlePlusModalCtrl', googlePlusModalCtrl);
             return $scope.items;
           }
         }
+      });
+
+      console.log(modalInstance);
+
+
+      modalInstance.rendered.then(function () {
+        console.log(document.getElementById('my-signin2'));
+
+        gapi.signin2.render('my-signin2', {
+          'scope': 'profile email',
+          'width': 240,
+          'height': 50,
+          'longtitle': true,
+          'theme': 'dark',
+          'onsuccess': onSignIn,
+          'onfailure': signOut
+        });
       });
     };
   }

@@ -20,8 +20,25 @@
 <!--TOP BAR-->
 <nav class="navbar navbar-default no-margin">
   <div class="navbar-header fixed-brand">
+
     <a class="navbar-brand" href="#"><img class="logo-half" src="images/others/koliber-logo.png"></a>
     <div class="container" ng-controller="collapseMenu">
+
+      <div ng-controller="googlePlusModalCtrl">
+        <script type="text/ng-template" id="myModalContent.html">
+          <div class="modal-header">
+          </div>
+          <div class="modal-body">
+            <div id="my-signin2" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+            <a href="#" onclick="signOut();">Sign out</a>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Zamknij</button>
+          </div>
+        </script>
+        <button class="btn btn-primary googleplus-button"  type="button" ng-click="open()">Zaloguj się przez Google+</button>
+      </div>
+
       <button ng-class="{active:tab===4}"
               ng-click="tab = 4" type="button"
               class="btn btn-default btn-lg button-topbar button-favorites" aria-label="Left Align">
@@ -163,36 +180,17 @@
               </table>
             </uib-accordion-group>
           </uib-accordion>
-          <div ng-controller="googlePlusModalCtrl">
-            <script type="text/ng-template" id="myModalContent.html">
-              <div class="modal-header">
-              </div>
-              <div class="modal-body">
-                  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                  <a href="#" onclick="signOut();">Sign out</a>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-warning" type="button" ng-click="cancel()">Zamknij</button>
-              </div>
-            </script>
-            <button class="btn btn-warning" type="button" ng-click="open()">Zamknij</button>
-          </div>
+
+
+
         </div>
       </div>
     </div>
   </div>
-  <!--CONTENT END-->
-  <!--<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
-</div>
 
-<!--SIGN-IN GOOGLE PLUS-->
-<!--<div class="cover">-->
-  <!--<div class="google-button-panel">-->
-    <!--<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
-    <!--<a href="#" onclick="signOut();">Sign out</a>-->
-  <!--</div>-->
-<!--</div>-->
-<!--SIGN-IN GOOGLE PLUS END-->
+  <!--CONTENT END-->
+
+</div>
 
 <script src="../../src/app/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../../src/app/bower_components/angular/angular.min.js"></script>
