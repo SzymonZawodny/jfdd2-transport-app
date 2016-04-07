@@ -106,8 +106,10 @@
       }
     }
 
-    function getDetails() {
+    function getDetails(busLine, busDestination, departureTime, busStopName) {
+      var detailsArray = [busLine, busDestination, departureTime, busStopName];
 
+      console.log(detailsArray);
     }
   }
 

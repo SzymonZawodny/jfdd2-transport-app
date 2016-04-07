@@ -163,7 +163,8 @@
                   </td>
                   <td class="col-departures border">
                     <div>
-                      <span ng-repeat="departure in bus.departures" ng-click="getDetails()"
+                      <span ng-repeat="departure in bus.departures"
+                            ng-click="getDetails(bus.line, bus.destination, departure, favoriteBusStop.name)"
                             class="departure-span">{{departure}}</span>
                     </div>
 
