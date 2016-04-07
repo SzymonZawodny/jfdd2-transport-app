@@ -168,16 +168,32 @@
     </div>
   </div>
   <!--CONTENT END-->
+  <div ng-controller="googlePlusModalCtrl">
+    <script type="text/ng-template" id="myModalContent.html">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+        <div class="google-button-panel">
+          <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+          <a href="#" onclick="signOut();">Sign out</a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Zamknij</button>
+      </div>
+    </script>
+  </div>
+
 </div>
 
-<--SIGN-IN GOOGLE PLUS-->
+<!--SIGN-IN GOOGLE PLUS-->
 <!--<div class="cover">-->
   <!--<div class="google-button-panel">-->
     <!--<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
     <!--<a href="#" onclick="signOut();">Sign out</a>-->
   <!--</div>-->
 <!--</div>-->
-<--SIGN-IN GOOGLE PLUS END-->
+<!--SIGN-IN GOOGLE PLUS END-->
 
 <script src="../../src/app/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../../src/app/bower_components/angular/angular.min.js"></script>

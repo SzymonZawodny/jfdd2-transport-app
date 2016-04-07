@@ -100,22 +100,8 @@ function addToFavorites($scope){
   };
 }
 
-//  function NewBusStop(name, bus, destination, departures){
-//    this.name = name;
-//    this.bus = bus;
-//    this.destination = destination;
-//    this.departures = departures;
-//  }
-//}
+app.controller('googlePlusModalCtrl', googlePlusModalCtrl);
 
-//angular.module('transportApp').controller('panelController', function($scope){
-//  $scope.tab = 4;
-//
-//  $scope.selectTab = function(setTab) {
-//    $scope.tab = setTab;
-//  };
-//
-//  $scope.isSelected = function(checkTab){
-//    return $scope.tab === checkTab;
-//  }
-//});
+  function googlePlusModalCtrl($scope){
+
+  }
