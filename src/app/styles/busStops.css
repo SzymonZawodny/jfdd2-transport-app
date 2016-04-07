@@ -1,15 +1,20 @@
 .busStopScrollList {
   border: solid 4px;
   border-color: #337ab7;
-  height: 250px;
+  height: 245px;
   width:18%;
-  min-width:120px ;
   overflow:hidden; overflow-y:scroll;
-  margin: 35px 35px 35px 35px;
   border-radius: 5px;
   color: #337ab7;
   font-size: 17px;
+  margin-left: 15px;
 }
+@media (max-width: 600px) {
+  .busStopScrollList {
+    min-width: 315px;
+  }
+}
+
 .busStopScrollList li:hover {
   background-color: #337ab7;
   color: white;
