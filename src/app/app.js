@@ -3,11 +3,13 @@
     ['ngAnimate', 'ui.bootstrap', 'LocalStorageModule'])
     .controller('panelController', panelController)
     .controller('favouritesCtrl', favouritesCtrl)
+    .controller('lineDetailsModalCtrl', openLineDetailsModal)
+    .controller('ModalInstanceCtrl', closeLineDetailsModal)
     .config(function (localStorageServiceProvider) {
       localStorageServiceProvider.setPrefix('transportApp');
     });
 
-  function panelController($scope) {
+    function panelController($scope) {
     $scope.accordion = 0;
     $scope.tab = 4;
     $scope.isCollapsed = true;
@@ -35,6 +37,7 @@
     $scope.removeFavoriteBusStop = removeFavourite;
     $scope.addBusStopToFavorites = addBusStopToFavorites;
     $scope.filterFavouritesByLines = filterFavouritesByLines;
+    $scope.getDetails = getDetails;
 
     function submit(key, val) {
       return localStorageService.set(key, val);
@@ -102,38 +105,27 @@
         });
       }
     }
+
+    function getDetails() {
+
+    }
   }
 
-  angular.module('transportApp').controller('lineDetailsModalCtrl', function ($scope, $uibModal) {
-
-    $scope.items = ['item1'];
-
-    $scope.animationsEnabled = true;
-
+  function openLineDetailsModal($scope, $uibModal) {
     $scope.open = function (size) {
-
       $uibModal.open({
-        animation: $scope.animationsEnabled,
-        templateUrl: 'myModalContent.html',
+        animation: true,
+        templateUrl: 'busLineDetailsTemplate.html',
         controller: 'ModalInstanceCtrl',
-        size: size,
-        resolve: {
-          items: function () {
-            return $scope.items;
-          }
-        }
+        size: size
       });
     };
-  });
+  }
 
-// Please note that $uibModalInstance represents a modal window (instance) dependency.
-// It is not the same as the $uibModal service used above.
-
-  angular.module('transportApp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
-
+  function closeLineDetailsModal($scope, $uibModalInstance) {
     $scope.cancel = function () {
-      $uibModalInstance.dismiss('Zamknij');
+      $uibModalInstance.dismiss();
     };
-  });
+  }
 
 }());

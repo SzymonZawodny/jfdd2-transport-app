@@ -163,7 +163,7 @@
                   </td>
                   <td class="col-departures border">
                     <div>
-                      <span ng-repeat="departure in bus.departures"
+                      <span ng-repeat="departure in bus.departures" ng-click="getDetails()"
                             class="departure-span">{{departure}}</span>
                     </div>
 
@@ -203,7 +203,7 @@
       </div>
 
       <div ng-controller="lineDetailsModalCtrl">
-        <script type="text/ng-template" id="myModalContent.html">
+        <script type="text/ng-template" id="busLineDetailsTemplate.html">
           <div class="modal-header">
             <p class="modal-title"><b>Detale przejazdu autobusu:</b></p>
           </div>
@@ -241,8 +241,6 @@
                 </td>
               </tr>
             </table>
-
-            <p>{{items}}</p>
           </div>
           <div class="modal-footer">
             <button class="btn btn-warning" type="button" ng-click="cancel()">Zamknij</button>
@@ -250,7 +248,6 @@
         </script>
         <button type="button" class="btn btn-default" ng-click="open('sm')">Detale przejazdu</button>
       </div>
-
     </div>
   </div>
   <!-- CONTENT END-->
