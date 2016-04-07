@@ -21,11 +21,12 @@
     }
   }
 
-  function favouritesCtrl($scope, localStorageService, busStopService) {
+  function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService) {
     $scope.oneAtATime = true;
 
     //symulacja serwera
     $scope.busStops = busStopService.getStops();
+    $scope.linesDetails = lineDetailsService.getLinesDetails();
     $scope.favoriteBusStops = localStorageService.get('favoriteBusStop') || [];
     $scope.busLines = uniqueLines();
 
@@ -103,7 +104,7 @@
     }
   }
 
-  angular.module('transportApp').controller('lineDetailsModalCtrl', function ($scope, $uibModal, $log) {
+  angular.module('transportApp').controller('lineDetailsModalCtrl', function ($scope, $uibModal) {
 
     $scope.items = ['item1'];
 
@@ -111,7 +112,7 @@
 
     $scope.open = function (size) {
 
-      var modalInstance = $uibModal.open({
+      $uibModal.open({
         animation: $scope.animationsEnabled,
         templateUrl: 'myModalContent.html',
         controller: 'ModalInstanceCtrl',

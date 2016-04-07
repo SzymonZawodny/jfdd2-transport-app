@@ -2,7 +2,7 @@
   angular.module('transportApp')
     .service('lineDetailsService', lineDetailsService);
 
-  function busStopsService() {
+  function lineDetailsService() {
     var lines = [
       {
         line: '145',
@@ -61,7 +61,7 @@
       }
     ];
 
-    this.getLineDetails = function () {
+    this.getLinesDetails = function () {
       return lines;
     }
   }
