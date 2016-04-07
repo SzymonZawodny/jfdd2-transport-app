@@ -36,6 +36,16 @@
             <button class="btn btn-warning" type="button" ng-click="cancel()">Zamknij</button>
           </div>
         </script>
+        <a href="#" onclick="signOut();">Sign out</a>
+        <script>
+          function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+              console.log('User signed out.');
+            });
+          }
+        </script>
+
         <button class="btn btn-primary googleplus-button"  type="button" ng-click="open()">Zaloguj się przez Google+</button>
       </div>
 
