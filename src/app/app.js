@@ -107,11 +107,16 @@
 
     function getDetails(busLine, busDestination, departureTime, busStopName) {
       $scope.busDetailsArray = [busLine, busDestination, departureTime, busStopName];
-      console.log($scope.busDetailsArray);
       openModal();
+
+      //$scope.filteredBusLine = $scope.linesDetails.filter(function (busLine) {
+      //  debugger;
+      //  return busLine.line === $scope.busDetailsArray[0];
+      //});
 
       function openModal() {
         console.log($scope.busDetailsArray);
+        debugger;
         $uibModal.open({
           animation: true,
           templateUrl: 'busLineDetailsTemplate.html',

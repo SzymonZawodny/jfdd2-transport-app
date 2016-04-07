@@ -201,44 +201,52 @@
 
           </uib-accordion>
         </div>
-      </div>
 
-      <div>
         <script type="text/ng-template" id="busLineDetailsTemplate.html">
           <div class="modal-header">
             <p class="modal-title"><b>Detale przejazdu autobusu:</b></p>
           </div>
-          <div class="modal-body">
+          <div class="modal-body bus-lines-modal">
             <h3><span class="label label-primary">{{busDetailsArray[0]}}</span></h3>
-            <h4><span class="label label-primary">{{busDetailsArray[1]}}</span></h4>
+            <h4><span class="label label-primary">Buraczana</span></h4>
 
             <table class="table table-striped table-stops">
               <tr>
-                <td class="col-line-no-header border background-color">Przystanek</td>
-                <td class="col-departures col-departures-header border background-color">Godzina odjazdu</td>
+                <td class="col-line-no-header border background-color"><b>Przystanek</b></td>
+                <td class="col-line-no-header border background-color"></td>
+                <td class="col-departures col-departures-header border background-color"><b>Godzina odjazdu</b></td>
               </tr>
               <tr>
                 <td class="col-stop-name border">
                   <span class="label label-primary">Strzelców</span>
                 </td>
+                <td class="col-stop-name border">
+                  <img src="images/others/line-stop-icon.png">
+                </td>
                 <td class="col-departures border">
-                    <span class="departure-span">0705</span>
+                    <span class="departure-span"><b>0705</b></span>
                 </td>
               </tr>
               <tr>
                 <td class="col-stop-name border">
                   <span class="label label-primary">Buraczana</span>
                 </td>
+                <td class="col-stop-name border">
+                  <img src="images/others/line-stop-icon.png">
+                </td>
                 <td class="col-departures border">
-                  <span class="departure-span">0709</span>
+                  <span class="departure-span"><b>0709</b></span>
                 </td>
               </tr>
               <tr>
                 <td class="col-stop-name border">
                   <span class="label label-primary">Tuwima</span>
                 </td>
+                <td class="col-stop-name border">
+                  <img src="images/others/line-stop-icon.png">
+                </td>
                 <td class="col-departures border">
-                  <span class="departure-span">0721</span>
+                  <span class="departure-span"><b>0721</b></span>
                 </td>
               </tr>
             </table>
