@@ -103,4 +103,36 @@
     }
   }
 
+  angular.module('transportApp').controller('lineDetailsModalCtrl', function ($scope, $uibModal, $log) {
+
+    $scope.items = ['item1'];
+
+    $scope.animationsEnabled = true;
+
+    $scope.open = function (size) {
+
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'myModalContent.html',
+        controller: 'ModalInstanceCtrl',
+        size: size,
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+    };
+  });
+
+// Please note that $uibModalInstance represents a modal window (instance) dependency.
+// It is not the same as the $uibModal service used above.
+
+  angular.module('transportApp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
+
+    $scope.cancel = function () {
+      $uibModalInstance.dismiss('Zamknij');
+    };
+  });
+
 }());

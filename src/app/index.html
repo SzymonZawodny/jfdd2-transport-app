@@ -201,6 +201,24 @@
           </uib-accordion>
         </div>
       </div>
+
+      <div ng-controller="lineDetailsModalCtrl">
+        <script type="text/ng-template" id="myModalContent.html">
+          <div class="modal-header">
+            <h3 class="modal-title">Detale przejazdu autobusu:</h3>
+          </div>
+          <div class="modal-body">
+            <h3><span class="label label-primary">145</span></h3>
+            <h4><span class="label label-primary">Tuwima</span></h4>
+            <p>{{items}}</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Zamknij</button>
+          </div>
+        </script>
+        <button type="button" class="btn btn-default" ng-click="open('lg')">Detale przejazdu</button>
+      </div>
+
     </div>
   </div>
   <!-- CONTENT END-->
