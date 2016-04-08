@@ -124,33 +124,20 @@
       $scope.busDetailsArray = [busLine, busDestination, departureTime, busStopName];
       openModal();
 
-      $scope.filteredBusLine = $scope.linesDetails.filter(function (busLine) {
-        return busLine.line === $scope.busDetailsArray[0];
-      });
+      $scope.filteredLineToAllDestinations = $scope.linesDetails
+        .filter(function (busLine) {return busLine.line === $scope.busDetailsArray[0];})
+        .map(function(destination){return destination.destination;});
 
-      $scope.destinations = $scope.filteredBusLine.map(function(destination){
-        return destination.destination;
-      });
+      $scope.filteredLineToSpecificDestination = $scope.filteredLineToAllDestinations[0]
+        .map(function(destination){return destination;})
+        .filter(function(destination){return destination.destinationName === $scope.busDetailsArray[1];});
 
-      $scope.destinationObjects = $scope.destinations[0].map(function(destination){
-        return destination;
-      });
+      $scope.allDepartures = $scope.filteredLineToSpecificDestination
+        .map(function(item){return item.departure});
 
-      $scope.filteredLineToSpecificDestination = $scope.destinationObjects.filter(function(destination){
-        return destination.destinationName === $scope.busDetailsArray[1];
-      });
-
-      $scope.departuresArray = $scope.filteredLineToSpecificDestination.map(function(item){
-        return item.departure
-      });
-
-      $scope.timetableObjects = $scope.departuresArray[0].map(function(item){
-        return item;
-      });
-
-      $scope.timetable = $scope.timetableObjects.filter(function(item){
-        return item.index === departureIndex;
-      });
+      $scope.timetable = $scope.allDepartures[0]
+        .map(function(item){return item;})
+        .filter(function(item){return item.index === departureIndex;});
 
       $scope.selectedBusStopIndex = $scope.filteredLineToSpecificDestination[0].busStops.indexOf(busStopName);
       $scope.pastBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice(0,$scope.selectedBusStopIndex);
