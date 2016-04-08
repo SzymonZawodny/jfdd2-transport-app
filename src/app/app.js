@@ -56,6 +56,17 @@
       if (favouriteBusStopsNames.indexOf(selected) === -1) {
         updateFavouriteBusStops();
       }
+      else{
+        if (favouriteBusStopsNames.indexOf(selected) >= 0 ) {
+            $uibModal.open({
+              animation: true,
+              templateUrl: 'favouritesNotUniqueModalTemplate.html',
+              controller: 'ModalInstanceCtrl',
+              size: 'md',
+              scope: $scope
+          });
+        }
+      }
 
       function updateFavouriteBusStops() {
         $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
@@ -161,7 +172,6 @@
 
 
       function openModal() {
-        console.log($scope.busDetailsArray);
         $uibModal.open({
           animation: true,
           templateUrl: 'busLineDetailsTemplate.html',
