@@ -117,8 +117,8 @@
         return destination.destination;
       });
 
-      $scope.insideInside = $scope.insideFilteredBusLine.map(function(destination){
-        return destination[0]; // check this line, always first item
+      $scope.insideInside = $scope.insideFilteredBusLine[0].map(function(destination){
+        return destination;
       });
 
       $scope.filteredBusLineAndDestination = $scope.insideInside.filter(function(destination){
@@ -133,12 +133,12 @@
       //console.log($scope.insideFilteredBusLine);
       //console.log('insideInside: ');
       //console.log($scope.insideInside);
-      //console.log('filteredBusLineAndDestination: ');
-      //console.log($scope.filteredBusLineAndDestination);
+      console.log('filteredBusLineAndDestination: ');
+      console.log($scope.filteredBusLineAndDestination);
 
 
       function openModal() {
-        //console.log($scope.busDetailsArray);
+        console.log($scope.busDetailsArray);
         $uibModal.open({
           animation: true,
           templateUrl: 'busLineDetailsTemplate.html',

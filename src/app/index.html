@@ -161,7 +161,6 @@
                             ng-click="getDetails(bus.line, bus.destination, departure, favoriteBusStop.name)"
                             class="departure-span">{{departure}}</span>
                     </div>
-
                   </td>
                 </tr>
               </table>
@@ -210,17 +209,6 @@
                 <td class="col-line-no-header border background-color"><b>Przystanek</b></td>
                 <td class="col-line-no-header border background-color"></td>
                 <td class="col-departures col-departures-header border background-color"><b>Godzina odjazdu</b></td>
-              </tr>
-              <tr ng-repeat="busStop in filteredBusLineAndDestination[0].busStops">
-                <td class="col-stop-name border">
-                  <span class="label label-primary">{{busStop}}</span>
-                </td>
-                <td class="col-stop-name border">
-                  <img src="images/others/line-stop-icon.png">
-                </td>
-                <td class="col-departures border">
-                  <span class="departure-span"><b>0721</b></span>
-                </td>
               </tr>
               <tr ng-repeat="busStop in filteredBusLineAndDestination[0].busStops">
                 <td class="col-stop-name border">
