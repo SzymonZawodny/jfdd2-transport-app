@@ -193,6 +193,7 @@
                   </td>
                   <td class="col-departures border">
                     <span ng-repeat="departure in bus.departures"
+                          ng-click="getDetails(bus.line, bus.destination, departure, filteredBusStop.name)"
                           class="departure-span">{{departure}}</span>
                   </td>
                 </tr>
@@ -216,31 +217,20 @@
                 <td class="col-line-no-header border background-color"></td>
                 <td class="col-departures col-departures-header border background-color"><b>Godzina odjazdu</b></td>
               </tr>
-              <tr>
+              <tr ng-repeat="busStop in filteredBusLineAndDestination[0].busStops">
                 <td class="col-stop-name border">
-                  <span class="label label-primary">Strzelców</span>
-                </td>
-                <td class="col-stop-name border">
-                  <img src="images/others/line-stop-icon.png">
-                </td>
-                <td class="col-departures border">
-                    <span class="departure-span"><b>0705</b></span>
-                </td>
-              </tr>
-              <tr>
-                <td class="col-stop-name border">
-                  <span class="label label-primary">Buraczana</span>
+                  <span class="label label-primary">{{busStop}}</span>
                 </td>
                 <td class="col-stop-name border">
                   <img src="images/others/line-stop-icon.png">
                 </td>
                 <td class="col-departures border">
-                  <span class="departure-span"><b>0709</b></span>
+                  <span class="departure-span"><b>0721</b></span>
                 </td>
               </tr>
-              <tr>
+              <tr ng-repeat="busStop in filteredBusLineAndDestination[0].busStops">
                 <td class="col-stop-name border">
-                  <span class="label label-primary">Tuwima</span>
+                  <span class="label label-primary">{{busStop}}</span>
                 </td>
                 <td class="col-stop-name border">
                   <img src="images/others/line-stop-icon.png">

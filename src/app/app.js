@@ -109,14 +109,36 @@
       $scope.busDetailsArray = [busLine, busDestination, departureTime, busStopName];
       openModal();
 
-      //$scope.filteredBusLine = $scope.linesDetails.filter(function (busLine) {
-      //  debugger;
-      //  return busLine.line === $scope.busDetailsArray[0];
-      //});
+      $scope.filteredBusLine = $scope.linesDetails.filter(function (busLine) {
+        return busLine.line === $scope.busDetailsArray[0];
+      });
+
+      $scope.insideFilteredBusLine = $scope.filteredBusLine.map(function(destination){
+        return destination.destination;
+      });
+
+      $scope.insideInside = $scope.insideFilteredBusLine.map(function(destination){
+        return destination[0]; // check this line, always first item
+      });
+
+      $scope.filteredBusLineAndDestination = $scope.insideInside.filter(function(destination){
+        return destination.destinationName === $scope.busDetailsArray[1];
+      });
+
+      //console.log('Lines Details: ');
+      //console.log($scope.linesDetails);
+      //console.log('filteredBusLine: ');
+      //console.log($scope.filteredBusLine);
+      //console.log('insideFilteredBusLine: ');
+      //console.log($scope.insideFilteredBusLine);
+      //console.log('insideInside: ');
+      //console.log($scope.insideInside);
+      //console.log('filteredBusLineAndDestination: ');
+      //console.log($scope.filteredBusLineAndDestination);
+
 
       function openModal() {
         console.log($scope.busDetailsArray);
-        debugger;
         $uibModal.open({
           animation: true,
           templateUrl: 'busLineDetailsTemplate.html',

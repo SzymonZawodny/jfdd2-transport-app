@@ -10,10 +10,11 @@
           {
             destinationName: 'Tuwima',
             busStops: ['Strzelców', 'Buraczana', 'Tuwima'],
-            departure: [{
-              index: 1,
-              timetable: ['0705', '0709', '0721']
-            },
+            departure: [
+              {
+                index: 1,
+                timetable: ['0705', '0709', '0721']
+              },
               {
                 index: 2,
                 timetable: ['0735', '0739', '0751']
