@@ -4,11 +4,12 @@
     .controller('panelController', panelController)
     .controller('favouritesCtrl', favouritesCtrl)
     .controller('busStopsController', busStopsController)
+    .controller('ModalInstanceCtrl', closeLineDetailsModal)
     .config(function (localStorageServiceProvider) {
       localStorageServiceProvider.setPrefix('transportApp');
     });
 
-  function panelController($scope) {
+    function panelController($scope) {
     $scope.accordion = 0;
     $scope.tab = 4;
     $scope.isCollapsed = true;
@@ -22,11 +23,12 @@
     }
   }
 
-  function favouritesCtrl($scope, localStorageService, busStopService) {
+  function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService, $uibModal) {
     $scope.oneAtATime = true;
 
     //symulacja serwera
     $scope.busStops = busStopService.getStops();
+    $scope.linesDetails = lineDetailsService.getLinesDetails();
     $scope.favoriteBusStops = localStorageService.get('favoriteBusStop') || [];
     $scope.busLines = uniqueLines();
 
@@ -35,6 +37,7 @@
     $scope.removeFavoriteBusStop = removeFavourite;
     $scope.addBusStopToFavorites = addBusStopToFavorites;
     $scope.filterFavouritesByLines = filterFavouritesByLines;
+    $scope.getDetails = getDetails;
 
     function submit(key, val) {
       return localStorageService.set(key, val);
@@ -102,6 +105,56 @@
         });
       }
     }
+
+    function getDetails(busLine, busDestination, departureTime, busStopName) {
+      $scope.busDetailsArray = [busLine, busDestination, departureTime, busStopName];
+      openModal();
+
+      $scope.filteredBusLine = $scope.linesDetails.filter(function (busLine) {
+        return busLine.line === $scope.busDetailsArray[0];
+      });
+
+      $scope.insideFilteredBusLine = $scope.filteredBusLine.map(function(destination){
+        return destination.destination;
+      });
+
+      $scope.insideInside = $scope.insideFilteredBusLine.map(function(destination){
+        return destination[0]; // check this line, always first item
+      });
+
+      $scope.filteredBusLineAndDestination = $scope.insideInside.filter(function(destination){
+        return destination.destinationName === $scope.busDetailsArray[1];
+      });
+
+      //console.log('Lines Details: ');
+      //console.log($scope.linesDetails);
+      //console.log('filteredBusLine: ');
+      //console.log($scope.filteredBusLine);
+      //console.log('insideFilteredBusLine: ');
+      //console.log($scope.insideFilteredBusLine);
+      //console.log('insideInside: ');
+      //console.log($scope.insideInside);
+      //console.log('filteredBusLineAndDestination: ');
+      //console.log($scope.filteredBusLineAndDestination);
+
+
+      function openModal() {
+        //console.log($scope.busDetailsArray);
+        $uibModal.open({
+          animation: true,
+          templateUrl: 'busLineDetailsTemplate.html',
+          controller: 'ModalInstanceCtrl',
+          size: 'sm',
+          scope: $scope
+        });
+      }
+    }
+  }
+
+  function closeLineDetailsModal($scope, $uibModalInstance) {
+    $scope.cancel = function () {
+      $uibModalInstance.dismiss();
+    };
   }
   function busStopsController($scope,busStopService) {
 
