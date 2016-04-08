@@ -130,9 +130,7 @@
       <h1 class="stopsHeader">Lista przystanków</h1>
       <ul class="busStopScrollList col-md-4">
         <li ng-click="showBusStopDetail(busStop)" ng-repeat="busStop in busStops">{{busStop.name}}</li>
-
       </ul>
-
       <div class="busStopInfo col-sm-8">
         <table class="table table-striped table-stops">
           <tr>
@@ -142,12 +140,13 @@
           <tr ng-repeat="bus in busStop.bus">
             <td class="col-line-no border">
               <h3><span class="label label-primary">{{bus.line}}</span></h3>
-              <h4><span class="label label-primary">{{bus.destination}}</span></h4>
+              <h4 class="bus-destination-label"><span class="label label-primary">{{bus.destination}}</span></h4>
             </td>
             <td class="col-departures border">
               <div>
-                      <span ng-repeat="departure in bus.departures"
-                            class="departure-span">{{departure}}</span>
+                <h4><span class="label label-primary departure-span"
+                          ng-repeat="departure in bus.departures">{{departure}}
+                </span></h4>
               </div>
 
             </td>
