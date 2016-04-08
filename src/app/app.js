@@ -138,7 +138,7 @@
 
 
       function openModal() {
-        console.log($scope.busDetailsArray);
+        //console.log($scope.busDetailsArray);
         $uibModal.open({
           animation: true,
           templateUrl: 'busLineDetailsTemplate.html',
