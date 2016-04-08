@@ -1,0 +1,103 @@
+#page-content-wrapper .title{
+  color: #337ab7;
+  margin: 20px 0 50px 0;
+  text-align: center;
+}
+
+#page-content-wrapper .panel-title {
+  font-size: 30px;
+  background-color: #337ab7;
+  color: #FFF;
+  transition: all 500ms ease-out;
+}
+
+#page-content-wrapper .panel-title:hover{
+  background-color: #2e6da4;
+}
+#page-content-wrapper .panel-heading {
+  background-color: #337ab7;
+  transition: all 500ms ease-out;
+}
+
+#page-content-wrapper .panel-heading:hover{
+  background-color: #2e6da4;
+}
+
+#page-content-wrapper .table-stops {
+  vertical-align: middle;
+}
+
+#page-content-wrapper .comboboxSelector {
+  width: 300px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+#page-content-wrapper .btn-selector {
+  position: relative;
+  top: -34px;
+  left: 320px;
+}
+
+#page-content-wrapper .border {
+  border: solid 2px #337ab7;
+}
+
+#page-content-wrapper .color {
+  color: #337ab7;
+}
+
+#page-content-wrapper .background-color {
+  background-color: #337ab7;
+  color: #fff;
+}
+
+#page-content-wrapper .busStopAccordion .col-line-no {
+  width: 10%;
+  text-align: center;
+
+}
+
+#page-content-wrapper .busStopAccordion .col-departures {
+  width: 90%;
+  text-align: left;
+}
+
+#page-content-wrapper .busStopAccordion .departure-span {
+  padding-left: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #337ab7;
+  display: inline-block;
+}
+.busStopAccordion .btn-favorites-remove {
+  float: right;
+  font-size: 16px;
+  line-height: 40px;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table > span{
+  display: block;
+}
+
+@media (max-width: 768px) {
+
+  #page-content-wrapper {
+    width: 100%;
+  }
+  #page-content-wrapper .btn-selector {
+    left: 0;
+    top: 10px;
+    margin-bottom: 20px;
+  }
+
+  #page-content-wrapper .comboboxSelector {
+    width: 250px;
+  }
+}
