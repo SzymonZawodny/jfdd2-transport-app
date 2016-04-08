@@ -27,6 +27,8 @@
       <div ng-controller="googlePlusModalCtrl">
         <script type="text/ng-template" id="myModalContent.html">
           <div class="modal-header">
+            <h4 class="modal-title">Zaloguj się za pomocą:</h4>
+
           </div>
           <div class="modal-body">
             <div id="my-signin2" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
@@ -44,8 +46,7 @@
             });
           }
         </script>
-
-        <button class="btn btn-primary googleplus-button"  type="button" ng-click="open()">Zaloguj się</button>
+        <button class="btn btn-primary googleplus-button"  type="button" ng-click="open('sm')">Zaloguj się</button>
       </div>
 
       <button ng-class="{active:tab===4}"
