@@ -60,7 +60,7 @@
         if (favouriteBusStopsNames.indexOf(selected) >= 0 ) {
             $uibModal.open({
               animation: true,
-              templateUrl: 'favouritesNotUniqueModalTemplate.html',
+              templateUrl: 'templates/favouritesNotUniqueModalTemplate.html',
               controller: 'ModalInstanceCtrl',
               size: 'md',
               scope: $scope
@@ -149,32 +149,14 @@
         return item.index === departureIndex;
       });
 
-      console.log('Lines Details: ');
-      console.log($scope.linesDetails);
-      console.log('filteredBusLine: ');
-      console.log($scope.filteredBusLine);
-      console.log('destinations: ');
-      console.log($scope.destinations);
-      console.log('destinationObjects: ');
-      console.log($scope.destinationObjects);
-      console.log('filteredLineToSpecificDestination: ');
-      console.log($scope.filteredLineToSpecificDestination);
-      console.log('departuresArray: ');
-      console.log($scope.departuresArray);
-      console.log(departureTime);
-      console.log('departureIndex: ');
-      console.log(departureIndex);
-      console.log('timetableObjects: ');
-      console.log($scope.timetableObjects);
-      console.log('timetable: ');
-      console.log($scope.timetable);
-
-
+      $scope.selectedBusStopIndex = $scope.filteredLineToSpecificDestination[0].busStops.indexOf(busStopName);
+      $scope.pastBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice(0,$scope.selectedBusStopIndex);
+      $scope.remainingBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice($scope.selectedBusStopIndex);
 
       function openModal() {
         $uibModal.open({
           animation: true,
-          templateUrl: 'busLineDetailsTemplate.html',
+          templateUrl: 'templates/busLineDetailsTemplate.html',
           controller: 'ModalInstanceCtrl',
           size: 'md',
           scope: $scope

@@ -96,6 +96,10 @@
   font-size: 16px;
 }
 
+.modal-body .past-elements{
+  opacity: 0.2;
+}
+
 .bus-destination-label{
   font-size: 25px;
 }

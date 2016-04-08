@@ -11,7 +11,7 @@
         <td class="col-line-no-header border background-color"></td>
         <td class="col-departures col-departures-header border background-color"><b>Godzina odjazdu</b></td>
       </tr>
-      <tr ng-repeat="busStop in filteredLineToSpecificDestination[0].busStops">
+      <tr class="past-elements" ng-repeat="busStop in pastBusStops">
         <td class="col-stop-name border">
           <h3><span class="label label-primary modal-label">{{busStop}}</span></h3>
         </td>
@@ -20,6 +20,17 @@
         </td>
         <td class="col-departures border">
           <h4><span class="label label-primary departure-span modal-label">{{timetable[0].timetable[$index]}}</span></h4>
+        </td>
+      </tr>
+      <tr ng-repeat="busStop in remainingBusStops">
+        <td class="col-stop-name border">
+          <h3><span class="label label-primary modal-label">{{busStop}}</span></h3>
+        </td>
+        <td class="col-stop-name border">
+          <img src="images/others/line-stop-icon.png">
+        </td>
+        <td class="col-departures border">
+          <h4><span class="label label-primary departure-span modal-label">{{timetable[0].timetable[$index+selectedBusStopIndex]}}</span></h4>
         </td>
       </tr>
     </table>
