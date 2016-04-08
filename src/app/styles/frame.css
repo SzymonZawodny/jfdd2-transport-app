@@ -35,6 +35,7 @@ border-radius: 0;
   width: 40px;
   color: #FFF;
   transition: all 300ms ease-out;
+  margin-right: 0;
 }
 
 .navbar-toggle:hover{
@@ -156,3 +157,13 @@ border-radius: 0;
   width: 90%;
   overflow-x: hidden;
 }
+
+/*@media (max-width: 768px) {*/
+  /*.googleplus-button {*/
+    /*top: 60px;*/
+  /*}*/
+
+  /*.googleplus-button-sign-out {*/
+    /*top: 60px;*/
+  /*}*/
+/*}*/
