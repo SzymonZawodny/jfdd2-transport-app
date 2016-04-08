@@ -166,7 +166,7 @@
           animation: true,
           templateUrl: 'busLineDetailsTemplate.html',
           controller: 'ModalInstanceCtrl',
-          size: 'sm',
+          size: 'md',
           scope: $scope
         });
       }
