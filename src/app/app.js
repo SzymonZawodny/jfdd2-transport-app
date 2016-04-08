@@ -5,6 +5,8 @@
     .controller('favouritesCtrl', favouritesCtrl)
     .controller('busStopsController', busStopsController)
     .controller('ModalInstanceCtrl', closeLineDetailsModal)
+    .controller('ModalInstanceCtrl', googlePlusModalDismiss)
+    .controller('googlePlusModalCtrl', googlePlusModalCtrl)
     .config(function (localStorageServiceProvider) {
       localStorageServiceProvider.setPrefix('transportApp');
     });
@@ -13,7 +15,6 @@
     $scope.accordion = 0;
     $scope.tab = 4;
     $scope.isCollapsed = true;
-  });
 
     $scope.selectTab = function (setTab) {
       $scope.tab = setTab;
@@ -167,22 +168,15 @@
 
     $scope.busStop= busStop;
     }
-
-
-
   }
-app.controller('googlePlusModalCtrl', googlePlusModalCtrl);
 
 function googlePlusModalCtrl($scope, $uibModal){
-
-
 
   $scope.items = ['item1'];
 
   $scope.animationsEnabled = true;
 
   $scope.open = function (size) {
-
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent.html',
@@ -196,8 +190,6 @@ function googlePlusModalCtrl($scope, $uibModal){
     });
 
     console.log(modalInstance);
-
-
     modalInstance.rendered.then(function () {
       console.log(document.getElementById('my-signin2'));
 
@@ -214,13 +206,9 @@ function googlePlusModalCtrl($scope, $uibModal){
   };
 }
 
-// Please note that $uibModalInstance represents a modal window (instance) dependency.
-// It is not the same as the $uibModal service used above.
-
-angular.module('transportApp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('Zamknij');
-  };
-});
+  function googlePlusModalDismiss($scope, $uibModalInstance) {
+    $scope.cancel = function () {
+      $uibModalInstance.dismiss('Zamknij');
+    };
+  }
 }());
