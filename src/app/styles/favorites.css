@@ -56,7 +56,6 @@
 #page-content-wrapper .busStopAccordion .col-line-no {
   width: 10%;
   text-align: center;
-
 }
 
 #page-content-wrapper .busStopAccordion .col-departures {
@@ -68,8 +67,8 @@
   padding-left: 5px;
   font-weight: bold;
   font-size: 16px;
-  color: #337ab7;
   display: inline-block;
+  margin-right: 10px;
 }
 .busStopAccordion .btn-favorites-remove {
   float: right;
@@ -99,5 +98,9 @@
 
   #page-content-wrapper .comboboxSelector {
     width: 250px;
+  }
+
+  #page-content-wrapper .busStopAccordion .col-line-no {
+    vertical-align: top;
   }
 }

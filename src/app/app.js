@@ -105,7 +105,8 @@
       }
     }
 
-    function getDetails(busLine, busDestination, departureTime, busStopName) {
+    function getDetails(busLine, busDestination, departureTime, busStopName, departureIndex) {
+
       $scope.busDetailsArray = [busLine, busDestination, departureTime, busStopName];
       openModal();
 
@@ -113,28 +114,50 @@
         return busLine.line === $scope.busDetailsArray[0];
       });
 
-      $scope.insideFilteredBusLine = $scope.filteredBusLine.map(function(destination){
+      $scope.destinations = $scope.filteredBusLine.map(function(destination){
         return destination.destination;
       });
 
-      $scope.insideInside = $scope.insideFilteredBusLine[0].map(function(destination){
+      $scope.destinationObjects = $scope.destinations[0].map(function(destination){
         return destination;
       });
 
-      $scope.filteredBusLineAndDestination = $scope.insideInside.filter(function(destination){
+      $scope.filteredLineToSpecificDestination = $scope.destinationObjects.filter(function(destination){
         return destination.destinationName === $scope.busDetailsArray[1];
       });
 
-      //console.log('Lines Details: ');
-      //console.log($scope.linesDetails);
-      //console.log('filteredBusLine: ');
-      //console.log($scope.filteredBusLine);
-      //console.log('insideFilteredBusLine: ');
-      //console.log($scope.insideFilteredBusLine);
-      //console.log('insideInside: ');
-      //console.log($scope.insideInside);
-      console.log('filteredBusLineAndDestination: ');
-      console.log($scope.filteredBusLineAndDestination);
+      $scope.departuresArray = $scope.filteredLineToSpecificDestination.map(function(item){
+        return item.departure
+      });
+
+      $scope.timetableObjects = $scope.departuresArray[0].map(function(item){
+        return item;
+      });
+
+      $scope.timetable = $scope.timetableObjects.filter(function(item){
+        return item.index === departureIndex;
+      });
+
+      console.log('Lines Details: ');
+      console.log($scope.linesDetails);
+      console.log('filteredBusLine: ');
+      console.log($scope.filteredBusLine);
+      console.log('destinations: ');
+      console.log($scope.destinations);
+      console.log('destinationObjects: ');
+      console.log($scope.destinationObjects);
+      console.log('filteredLineToSpecificDestination: ');
+      console.log($scope.filteredLineToSpecificDestination);
+      console.log('departuresArray: ');
+      console.log($scope.departuresArray);
+      console.log(departureTime);
+      console.log('departureIndex: ');
+      console.log(departureIndex);
+      console.log('timetableObjects: ');
+      console.log($scope.timetableObjects);
+      console.log('timetable: ');
+      console.log($scope.timetable);
+
 
 
       function openModal() {

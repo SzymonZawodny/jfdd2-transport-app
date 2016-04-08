@@ -147,7 +147,7 @@
               </uib-accordion-heading>
               <table class="table table-striped table-stops">
                 <tr>
-                  <td class="col-line-no-header border background-color">Numer linii</td>
+                  <td class="col-line-no-header border background-color">Numer linii / Do:</td>
                   <td class="col-departures col-departures-header border background-color">Godziny odjazdu</td>
                 </tr>
                 <tr ng-repeat="bus in favoriteBusStop.bus">
@@ -157,9 +157,9 @@
                   </td>
                   <td class="col-departures border">
                     <div>
-                      <span ng-repeat="departure in bus.departures"
-                            ng-click="getDetails(bus.line, bus.destination, departure, favoriteBusStop.name)"
-                            class="departure-span">{{departure}}</span>
+                      <h4><span class="label label-primary departure-span" ng-repeat="departure in bus.departures"
+                            ng-click="getDetails(bus.line, bus.destination, departure, favoriteBusStop.name, $index)"
+                            >{{departure}}</span></h4>
                     </div>
                   </td>
                 </tr>
@@ -176,7 +176,7 @@
               </uib-accordion-heading>
               <table class="table table-striped table-stops">
                 <tr>
-                  <td class="col-line-no-header border background-color">Numer linii</td>
+                  <td class="col-line-no-header border background-color">Numer linii / Do:</td>
                   <td class="col-departures col-departures-header border background-color">Godziny odjazdu</td>
                 </tr>
                 <tr ng-repeat="bus in filteredBusStop.bus">
@@ -210,7 +210,7 @@
                 <td class="col-line-no-header border background-color"></td>
                 <td class="col-departures col-departures-header border background-color"><b>Godzina odjazdu</b></td>
               </tr>
-              <tr ng-repeat="busStop in filteredBusLineAndDestination[0].busStops">
+              <tr ng-repeat="busStop in filteredLineToSpecificDestination[0].busStops">
                 <td class="col-stop-name border">
                   <span class="label label-primary">{{busStop}}</span>
                 </td>
@@ -218,7 +218,7 @@
                   <img src="images/others/line-stop-icon.png">
                 </td>
                 <td class="col-departures border">
-                  <span class="departure-span"><b>0721</b></span>
+                  <h4><span class="label label-primary departure-span">{{timetable[0].timetable[$index]}}</span></h4>
                 </td>
               </tr>
             </table>
