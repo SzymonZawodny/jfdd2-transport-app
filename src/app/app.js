@@ -3,6 +3,7 @@
     ['ngAnimate', 'ui.bootstrap', 'LocalStorageModule'])
     .controller('panelController', panelController)
     .controller('favouritesCtrl', favouritesCtrl)
+    .controller('busStopsController', busStopsController)
     .controller('ModalInstanceCtrl', closeLineDetailsModal)
     .config(function (localStorageServiceProvider) {
       localStorageServiceProvider.setPrefix('transportApp');
@@ -154,6 +155,20 @@
     $scope.cancel = function () {
       $uibModalInstance.dismiss();
     };
+  }
+  function busStopsController($scope,busStopService) {
+
+    //symulacja serwera
+    $scope.busStops = busStopService.getStops();
+    $scope.showBusStopDetail = showBusStopDetail;
+
+    function showBusStopDetail(busStop){
+
+    $scope.busStop= busStop;
+    }
+
+
+
   }
 
 }());
