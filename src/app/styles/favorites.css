@@ -69,11 +69,21 @@
   font-weight: bold;
   font-size: 16px;
   color: #337ab7;
+  display: inline-block;
+}
+.busStopAccordion .btn-favorites-remove {
+  float: right;
+  font-size: 16px;
+  line-height: 40px;
 }
 
 .table > tbody > tr > td {
   vertical-align: middle;
   text-align: center;
+}
+
+.table > span{
+  display: block;
 }
 
 @media (max-width: 768px) {
