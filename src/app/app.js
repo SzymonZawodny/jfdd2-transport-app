@@ -59,6 +59,17 @@
       if (favouriteBusStopsNames.indexOf(selected) === -1) {
         updateFavouriteBusStops();
       }
+      else{
+        if (favouriteBusStopsNames.indexOf(selected) >= 0 ) {
+            $uibModal.open({
+              animation: true,
+              templateUrl: 'templates/favouritesNotUniqueModalTemplate.html',
+              controller: 'ModalInstanceCtrl',
+              size: 'md',
+              scope: $scope
+          });
+        }
+      }
 
       function updateFavouriteBusStops() {
         $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
@@ -108,45 +119,36 @@
       }
     }
 
-    function getDetails(busLine, busDestination, departureTime, busStopName) {
+    function getDetails(busLine, busDestination, departureTime, busStopName, departureIndex) {
+
       $scope.busDetailsArray = [busLine, busDestination, departureTime, busStopName];
       openModal();
 
-      $scope.filteredBusLine = $scope.linesDetails.filter(function (busLine) {
-        return busLine.line === $scope.busDetailsArray[0];
-      });
+      $scope.filteredLineToAllDestinations = $scope.linesDetails
+        .filter(function (busLine) {return busLine.line === $scope.busDetailsArray[0];})
+        .map(function(destination){return destination.destination;});
 
-      $scope.insideFilteredBusLine = $scope.filteredBusLine.map(function(destination){
-        return destination.destination;
-      });
+      $scope.filteredLineToSpecificDestination = $scope.filteredLineToAllDestinations[0]
+        .map(function(destination){return destination;})
+        .filter(function(destination){return destination.destinationName === $scope.busDetailsArray[1];});
 
-      $scope.insideInside = $scope.insideFilteredBusLine.map(function(destination){
-        return destination[0]; // check this line, always first item
-      });
+      $scope.allDepartures = $scope.filteredLineToSpecificDestination
+        .map(function(item){return item.departure});
 
-      $scope.filteredBusLineAndDestination = $scope.insideInside.filter(function(destination){
-        return destination.destinationName === $scope.busDetailsArray[1];
-      });
+      $scope.timetable = $scope.allDepartures[0]
+        .map(function(item){return item;})
+        .filter(function(item){return item.index === departureIndex;});
 
-      //console.log('Lines Details: ');
-      //console.log($scope.linesDetails);
-      //console.log('filteredBusLine: ');
-      //console.log($scope.filteredBusLine);
-      //console.log('insideFilteredBusLine: ');
-      //console.log($scope.insideFilteredBusLine);
-      //console.log('insideInside: ');
-      //console.log($scope.insideInside);
-      //console.log('filteredBusLineAndDestination: ');
-      //console.log($scope.filteredBusLineAndDestination);
-
+      $scope.selectedBusStopIndex = $scope.filteredLineToSpecificDestination[0].busStops.indexOf(busStopName);
+      $scope.pastBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice(0,$scope.selectedBusStopIndex);
+      $scope.remainingBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice($scope.selectedBusStopIndex);
 
       function openModal() {
-        //console.log($scope.busDetailsArray);
         $uibModal.open({
           animation: true,
-          templateUrl: 'busLineDetailsTemplate.html',
+          templateUrl: 'templates/busLineDetailsTemplate.html',
           controller: 'ModalInstanceCtrl',
-          size: 'sm',
+          size: 'md',
           scope: $scope
         });
       }
