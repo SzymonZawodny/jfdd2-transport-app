@@ -110,6 +110,10 @@ border-radius: 0;
   display:none;
 }
 
+.grayed{
+  opacity:0.2;
+}
+
 .button-topbar {
   width: 155px;
   text-align: left;

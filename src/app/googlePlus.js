@@ -13,7 +13,9 @@
     console.log("ID Token: " + id_token);
 
     $('.btn.btn-default.btn-lg.button-sidebar').eq(3).removeClass('btn-favourites');
+    $('.btn.btn-default.btn-lg.button-sidebar').eq(4).addClass('btn-favourites');
     $('.btn.btn-default.btn-lg.button-topbar').eq(3).removeClass('btn-favourites');
+    $('.btn.btn-default.btn-lg.button-topbar').eq(4).addClass('btn-favourites');
   }
 
   function signOut() {
@@ -23,5 +25,7 @@
     });
 
     $('.btn.btn-default.btn-lg.button-sidebar').eq(3).addClass('btn-favourites');
+    $('.btn.btn-default.btn-lg.button-sidebar').eq(4).removeClass('btn-favourites');
     $('.btn.btn-default.btn-lg.button-topbar').eq(3).addClass('btn-favourites');
+    $('.btn.btn-default.btn-lg.button-topbar').eq(4).removeClass('btn-favourites');
   }
