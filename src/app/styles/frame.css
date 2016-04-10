@@ -106,6 +106,10 @@ border-radius: 0;
   margin: 0;
 }
 
+.btn-favourites{
+  display:none;
+}
+
 .button-topbar {
   width: 155px;
   text-align: left;

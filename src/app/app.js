@@ -13,7 +13,7 @@
 
     function panelController($scope) {
     $scope.accordion = 0;
-    $scope.tab = 4;
+    $scope.tab = 1;
     $scope.isCollapsed = true;
 
     $scope.selectTab = function (setTab) {

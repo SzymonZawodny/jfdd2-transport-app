@@ -11,6 +11,9 @@
     // The ID token you need to pass to your backend:
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
+
+    $('.btn.btn-default.btn-lg.button-sidebar').eq(3).removeClass('btn-favourites');
+    $('.btn.btn-default.btn-lg.button-topbar').eq(3).removeClass('btn-favourites');
   }
 
   function signOut() {
@@ -18,4 +21,7 @@
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
+
+    $('.btn.btn-default.btn-lg.button-sidebar').eq(3).addClass('btn-favourites');
+    $('.btn.btn-default.btn-lg.button-topbar').eq(3).addClass('btn-favourites');
   }
