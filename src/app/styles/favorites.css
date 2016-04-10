@@ -1,4 +1,4 @@
-#page-content-wrapper .title{
+#page-content-wrapper .title {
   color: #337ab7;
   margin: 20px 0 50px 0;
   text-align: center;
@@ -11,15 +11,16 @@
   transition: all 500ms ease-out;
 }
 
-#page-content-wrapper .panel-title:hover{
+#page-content-wrapper .panel-title:hover {
   background-color: #2e6da4;
 }
+
 #page-content-wrapper .panel-heading {
   background-color: #337ab7;
   transition: all 500ms ease-out;
 }
 
-#page-content-wrapper .panel-heading:hover{
+#page-content-wrapper .panel-heading:hover {
   background-color: #2e6da4;
 }
 
@@ -56,7 +57,6 @@
 #page-content-wrapper .busStopAccordion .col-line-no {
   width: 10%;
   text-align: center;
-
 }
 
 #page-content-wrapper .busStopAccordion .col-departures {
@@ -64,13 +64,19 @@
   text-align: left;
 }
 
-#page-content-wrapper .busStopAccordion .departure-span {
+.departure-span {
   padding-left: 5px;
   font-weight: bold;
   font-size: 16px;
-  color: #337ab7;
   display: inline-block;
+  margin-right: 10px;
 }
+
+#page-content-wrapper .busStopAccordion .departure-span:hover {
+  cursor: pointer;
+  cursor: hand;;
+}
+
 .busStopAccordion .btn-favorites-remove {
   float: right;
   font-size: 16px;
@@ -82,8 +88,25 @@
   text-align: center;
 }
 
-.table > span{
+.table > span {
   display: block;
+}
+
+.modal-body .modal-label {
+  font-size: 16px;
+}
+
+.modal-body .past-elements{
+  opacity: 0.2;
+}
+
+.bus-destination-label{
+  font-size: 25px;
+}
+
+.bus-destination-label-modal{
+  font-size: 25px;
+  margin: 6px auto;
 }
 
 @media (max-width: 768px) {
@@ -91,6 +114,7 @@
   #page-content-wrapper {
     width: 100%;
   }
+
   #page-content-wrapper .btn-selector {
     left: 0;
     top: 10px;
@@ -99,5 +123,15 @@
 
   #page-content-wrapper .comboboxSelector {
     width: 250px;
+  }
+
+  #page-content-wrapper .busStopAccordion .col-line-no {
+    vertical-align: top;
+  }
+
+  .bus-destination-label {
+    transform: rotate(90deg);
+    margin: 140px -70px;
+    font-size: 32px;
   }
 }
