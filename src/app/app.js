@@ -33,6 +33,7 @@
     $scope.linesDetails = lineDetailsService.getLinesDetails();
     $scope.favoriteBusStops = localStorageService.get('favoriteBusStop') || [];
     $scope.busLines = uniqueLines();
+    $scope.mostPopularBusStops = [];
 
     //funkcje do widoku
     $scope.submit = submit;
@@ -41,9 +42,33 @@
     $scope.filterFavouritesByLines = filterFavouritesByLines;
     $scope.getDetails = getDetails;
     $scope.showMostPopularStops = showMostPopularStops;
+    readMostPopularFromLocalStorage();
 
     function submit(key, val) {
       return localStorageService.set(key, val);
+    }
+
+    function readMostPopularFromLocalStorage(){
+
+      $scope.mostPopularBusStops=[];
+
+      var BusStopObject = function(name, count) {
+        this.name = name;
+        this.count = count;
+      };
+
+      for (var i = 0; i < localStorage.length; i++){
+        $scope.newBusObject =
+          new BusStopObject(localStorage.key(i).split('.')[1],
+            Number(localStorage.getItem(localStorage.key(i))));
+        $scope.mostPopularBusStops.push($scope.newBusObject);
+      }
+      $scope.mostPopularBusStops.pop();
+      $scope.mostPopularBusStops
+        .sort(function(a,b) {
+          return (a.count > b.count) ? 1 : ((b.count > a.count) ? -1 : 0);
+        })
+        .reverse();
     }
 
     function addBusStopToFavorites() {
@@ -66,7 +91,7 @@
               animation: true,
               templateUrl: 'templates/favouritesNotUniqueModalTemplate.html',
               controller: 'ModalInstanceCtrl',
-              size: 'md',
+              size: 'sm',
               scope: $scope
           });
         }
@@ -77,28 +102,11 @@
         $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
         $scope.busLines = uniqueLines();
 
-        var busStopObject = function(name, count) {
-          this.name = name;
-          this.count = count;
-        };
-
         //saving count for each busStop on click
         var currentCount = localStorageService.get($scope.busStops[selectedBusStopIndex].name);
         $scope.submit($scope.busStops[selectedBusStopIndex].name, currentCount+1);
 
-        //reading from local storage
-        $scope.mostPopularBusStops = [];
-        for (var i = 0; i < localStorage.length; i++){
-          $scope.newBusObject = new busStopObject(localStorage.key(i).split('.')[1], Number(localStorage.getItem(localStorage.key(i))));
-          $scope.mostPopularBusStops.push($scope.newBusObject);
-        }
-        $scope.mostPopularBusStops.pop();
-        $scope.mostPopularBusStops
-          .sort(function(a,b) {
-            return (a.count > b.count) ? 1 : ((b.count > a.count) ? -1 : 0);
-          })
-          .reverse();
-        console.log($scope.mostPopularBusStops);
+        readMostPopularFromLocalStorage();
       }
     }
 
@@ -184,7 +192,7 @@
       function openModal() {
         $uibModal.open({
           animation: true,
-          templateUrl: 'templates/busLineDetailsTemplate.html',
+          templateUrl: 'templates/mostPopularBusStops.html',
           controller: 'ModalInstanceCtrl',
           size: 'md',
           scope: $scope
@@ -246,7 +254,7 @@
     }
   }
 
-function googlePlusModalCtrl($scope, $uibModal){
+  function googlePlusModalCtrl($scope, $uibModal){
 
   $scope.items = ['item1'];
 

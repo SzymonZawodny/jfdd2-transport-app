@@ -182,7 +182,6 @@
     </div>
     <div class="panel" ng-show=ifTabSelected(4)>
       <h3 class="title">Ulubione przystanki</h3>
-
       <div ng-controller="favouritesCtrl" class="container-fluid favorites">
         <div class="comboboxSelector">
           <select name="selectedBusStop" class="form-control color" id="selectedBusStop">
@@ -264,9 +263,14 @@
                 </tr>
               </table>
             </uib-accordion-group>
-
           </uib-accordion>
         </div>
+        <button type="button"
+                ng-click="showMostPopularStops()"
+                class="btn btn-primary btn-lg" aria-label="Left Align">
+          <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+          &nbsp Najczęściej wybierane
+        </button>
       </div>
     </div>
 </div>
