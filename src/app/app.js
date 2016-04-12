@@ -40,6 +40,7 @@
     $scope.addBusStopToFavorites = addBusStopToFavorites;
     $scope.filterFavouritesByLines = filterFavouritesByLines;
     $scope.getDetails = getDetails;
+    $scope.showMostPopularStops = showMostPopularStops;
 
     function submit(key, val) {
       return localStorageService.set(key, val);
@@ -165,6 +166,20 @@
       $scope.selectedBusStopIndex = $scope.filteredLineToSpecificDestination[0].busStops.indexOf(busStopName);
       $scope.pastBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice(0,$scope.selectedBusStopIndex);
       $scope.remainingBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice($scope.selectedBusStopIndex);
+
+      function openModal() {
+        $uibModal.open({
+          animation: true,
+          templateUrl: 'templates/busLineDetailsTemplate.html',
+          controller: 'ModalInstanceCtrl',
+          size: 'md',
+          scope: $scope
+        });
+      }
+    }
+
+    function showMostPopularStops(){
+      openModal();
 
       function openModal() {
         $uibModal.open({
