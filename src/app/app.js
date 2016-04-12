@@ -74,6 +74,8 @@
       function updateFavouriteBusStops() {
         $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
         $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
+        var currentCount = localStorageService.get($scope.busStops[selectedBusStopIndex].name);
+        $scope.submit($scope.busStops[selectedBusStopIndex].name, currentCount+1);
         $scope.busLines = uniqueLines();
       }
     }
