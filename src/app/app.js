@@ -77,7 +77,17 @@
         var currentCount = localStorageService.get($scope.busStops[selectedBusStopIndex].name);
         $scope.submit($scope.busStops[selectedBusStopIndex].name, currentCount+1);
         $scope.busLines = uniqueLines();
+        var mostPopularBusStops = [];
+        for (var i = 0; i < localStorage.length; i++){
+          mostPopularBusStops.push(localStorage.getItem(localStorage.key(i)) + ": " + localStorage.key(i));
+        }
+        mostPopularBusStops.pop();
+        console.log(mostPopularBusStops);
       }
+
+      //function compareNumbers(a, b) {
+      //  return a - b
+      //}
     }
 
     function uniqueLines() {
