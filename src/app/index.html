@@ -158,8 +158,10 @@
             <td class="col-departures border">
               <div>
                 <h4><span class="label label-primary departure-span"
-                          ng-repeat="departure in bus.departures">{{departure}}
-                </span></h4>
+                          ng-repeat="departure in bus.departures"
+                          ng-click="getDetails(bus.line, bus.destination, departure, busStop.name, $index)"
+                >{{departure}}
+                      </span></h4>
               </div>
 
             </td>
@@ -227,7 +229,8 @@
                       <h4><span class="label label-primary departure-span"
                                 ng-repeat="departure in bus.departures"
                                 ng-click="getDetails(bus.line, bus.destination, departure, favoriteBusStop.name, $index)"
-                                >{{departure}}</span></h4>
+                                >{{departure}}
+                      </span></h4>
                     </div>
                   </td>
                 </tr>
