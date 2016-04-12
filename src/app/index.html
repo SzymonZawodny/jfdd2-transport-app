@@ -35,15 +35,7 @@
             <button class="btn btn-warning" type="button" ng-click="cancel()">Zamknij</button>
           </div>
         </script>
-        <a class="btn btn-primary googleplus-button-sign-out" href="#" onclick="signOut();">Wyloguj się</a>
-        <script>
-          function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-              console.log('User signed out.');
-            });
-          }
-        </script>
+        <a class="btn btn-primary googleplus-button-sign-out" ng-click=selectTab(1) href="#" onclick="signOut();">Wyloguj się</a>
         <button class="btn btn-primary googleplus-button"  type="button" ng-click="open('sm')">Zaloguj się</button>
       </div>
       <button type="button" class="btn btn-default navbar-toggle collapsed"
@@ -158,19 +150,18 @@
             <td class="col-departures border">
               <div>
                 <h4><span class="label label-primary departure-span"
-                          ng-repeat="departure in bus.departures">{{departure}}
-                </span></h4>
+                          ng-repeat="departure in bus.departures"
+                          ng-click="getDetails(bus.line, bus.destination, departure, busStop.name, $index)"
+                >{{departure}}
+                      </span></h4>
               </div>
-
             </td>
           </tr>
         </table>
-
-      </div>
-
+       </div>
     </div>
 
-    <div class="panel" ng-show=ifTabSelected(2)>
+   <div class="panel" ng-show=ifTabSelected(2)>
       <span>TAB 2</span>
 
     </div>
@@ -180,7 +171,6 @@
     </div>
     <div class="panel" ng-show=ifTabSelected(4)>
       <h3 class="title">Ulubione przystanki</h3>
-
       <div ng-controller="favouritesCtrl" class="container-fluid favorites">
         <div class="comboboxSelector">
           <select name="selectedBusStop" class="form-control color" id="selectedBusStop">
@@ -227,7 +217,8 @@
                       <h4><span class="label label-primary departure-span"
                                 ng-repeat="departure in bus.departures"
                                 ng-click="getDetails(bus.line, bus.destination, departure, favoriteBusStop.name, $index)"
-                                >{{departure}}</span></h4>
+                                >{{departure}}
+                      </span></h4>
                     </div>
                   </td>
                 </tr>
@@ -261,9 +252,14 @@
                 </tr>
               </table>
             </uib-accordion-group>
-
           </uib-accordion>
         </div>
+        <button type="button"
+                ng-click="showMostPopularStops()"
+                class="btn btn-primary btn-lg" aria-label="Left Align">
+          <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+          &nbsp Najczęściej wybierane
+        </button>
       </div>
     </div>
 </div>

@@ -72,7 +72,7 @@
   margin-right: 10px;
 }
 
-#page-content-wrapper .busStopAccordion .departure-span:hover {
+#page-content-wrapper .departure-span:hover {
   cursor: pointer;
   cursor: hand;;
 }
@@ -98,6 +98,16 @@
 
 .modal-body .past-elements{
   opacity: 0.2;
+}
+
+.modal-body .most-popular-label{
+  font-size: 24px;
+}
+
+.modal-body .favourites-star {
+  position: relative;
+  left: -10px;
+  top: -3px;
 }
 
 .bus-destination-label{
