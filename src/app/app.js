@@ -91,7 +91,7 @@
               animation: true,
               templateUrl: 'templates/favouritesNotUniqueModalTemplate.html',
               controller: 'ModalInstanceCtrl',
-              size: 'sm',
+              size: 'md',
               scope: $scope
           });
         }
@@ -194,7 +194,7 @@
           animation: true,
           templateUrl: 'templates/mostPopularBusStops.html',
           controller: 'ModalInstanceCtrl',
-          size: 'md',
+          size: 'sm',
           scope: $scope
         });
       }
