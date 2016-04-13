@@ -27,10 +27,23 @@ h4{
 .googleplus-button{
   margin-top: 10px;
   position: absolute;
-  right: 160px;
+  right: 60px;
+  width: 100px;
 }
 .googleplus-button-sign-out{
   margin-top: 10px;
   position: absolute;
   right: 60px;
+  width: 100px;
+}
+
+.signed-in-as{
+  margin-top: 10px;
+  position: absolute;
+  right: 170px;
+  width: 180px;
+}
+
+.inactive {
+  display: none;
 }
