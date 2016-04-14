@@ -1,4 +1,5 @@
-function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService, $uibModal) {
+function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService, $uibModal, $log) {
+  $log.info('loading service content: simulation server, function to viev');
   $scope.oneAtATime = true;
 
   //symulacja serwera
@@ -125,7 +126,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   }
 
   function getDetails(busLine, busDestination, departureTime, busStopName, departureIndex) {
-
+    $log.info('Details initialized');
     $scope.busDetailsArray = [busLine, busDestination, departureTime, busStopName];
     openModal();
 
