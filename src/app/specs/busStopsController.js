@@ -94,11 +94,27 @@ QUnit.test('Filtrowanie danych', function(assert) {
     ,["Strzelców"]
     ,'Stworzenie tablicy "przeszłych" przystanków');
 
-
   this.mockScope.getDetails('145', 'Tuwima', '0706', 'Grenadierów', 1);
   assert.deepEqual(this.mockScope.remainingBusStops
     ,['Grenadierów', 'Buraczana', 'Nałkowskiej', 'Źródło Marii', 'Brzechwy', 'Tuwima']
     ,'Stworzenie tablicy "przyszłych" przystanków');
+
+  this.mockScope.getDetails('145', 'Tuwima', '0706', 'Grenadierów', 1);
+  assert.deepEqual(this.mockScope.timetable
+    ,[{
+        "index": 1,
+        "timetable": [
+          "0735",
+          "0736",
+          "0739",
+          "0740",
+          "0741",
+          "0743",
+          "0751"
+        ]
+      }
+    ]
+    ,'Odczyt godzin odjazdu konkretnego przejazdu autobusu');
   debugger;
 });
 
