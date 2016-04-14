@@ -1,4 +1,4 @@
-QUnit.module('shared get details module',{
+QUnit.module('Bus stops controller',{
   beforeEach: function() {
     this.mockScope = {};
     this.uibModal = {
