@@ -9,6 +9,7 @@
   font-size: 17px;
   margin-left: 15px;
 }
+
 @media (max-width: 768px) {
   .busStopScrollList {
     min-width:94%;
@@ -20,6 +21,8 @@
   background-color: #337ab7;
   color: white;
   font-weight: bold;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .stopsHeader{
