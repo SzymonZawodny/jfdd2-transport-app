@@ -100,7 +100,7 @@ QUnit.test('Most popular bus stops', function(assert) {
     }
     ], 'Sorting most popular bus stops by likes (descending) - sorted');
 
-  this.mockScope.newBusStopObject("Przystanek 1", 2, 3);
+  this.mockScope.newBusStopObject("Przystanek 1", 2);
   assert.notDeepEqual(this.mockScope.newBusStopObjectInstance,
     {
       "count": 2,
@@ -118,14 +118,8 @@ QUnit.test('Most popular bus stops', function(assert) {
   assert.deepEqual(this.mockScope.newBusStopObjectInstance,
     {}, "Creating new bus stop object with NO arguments - no object created");
 
-  this.mockScope.uniqueLines();
+  this.mockScope.newBusStopObject(" ");
   assert.deepEqual(this.mockScope.newBusStopObjectInstance,
     {}, "Creating new bus stop object with SPACE in name argument - no object created");
-
-  this.mockScope.updateFavouriteBusStops();
-  assert.deepEqual(this.mockScope.mostPopularBusStops,
-    {}, "Reading most popular bus stops from local storage")
-
-
 });
 

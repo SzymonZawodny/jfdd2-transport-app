@@ -5,7 +5,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   $scope.busStops = busStopService.getStops();
   $scope.linesDetails = lineDetailsService.getLinesDetails();
   $scope.favoriteBusStops = localStorageService.get('favoriteBusStop') || [];
-  $scope.busLines = uniqueLines();
+  $scope.busLines = uniqueLines($scope.favoriteBusStops);
   $scope.mostPopularBusStops = [];
 
   //funkcje do widoku
@@ -17,6 +17,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   $scope.showMostPopularStops = showMostPopularStops;
   $scope.sort = sort;
   $scope.newBusStopObject = newBusStopObject;
+  $scope.uniqueLines = uniqueLines;
   readMostPopularFromLocalStorage();
 
   function submit(key, val) {
@@ -83,7 +84,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
     function updateFavouriteBusStops() {
       $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
       $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
-      $scope.busLines = uniqueLines();
+      $scope.busLines = uniqueLines($scope.favoriteBusStops);
 
       //saving count for each busStop on click
       var currentCount = localStorageService.get($scope.busStops[selectedBusStopIndex].name);
@@ -93,16 +94,15 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
     }
   }
 
-  function uniqueLines() {
-    if ($scope.favoriteBusStops) {
-      return $scope.favoriteBusStops.map(function (stop) {
+  function uniqueLines(favoriteBusStops) {
+    if (favoriteBusStops) {
+      return favoriteBusStops.map(function (stop) {
         return stop.bus.map(function (bus) {
           return bus.line;
         });
       }).reduce(function (a, b) {
         return a.concat(b);
       }, []).filter(onlyUnique);
-
       function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
       }
@@ -116,7 +116,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
     }
     $scope.favoriteBusStops.splice(idx, 1);
     $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
-    $scope.busLines = uniqueLines();
+    $scope.busLines = uniqueLines($scope.favoriteBusStops);
   }
 
   function filterFavouritesByLines() {

@@ -82,22 +82,22 @@ QUnit.module('Bus stops controller',{
   });
 
 
-QUnit.test('Filtrowanie danych', function(assert) {
+QUnit.test('Filtering data from API', function(assert) {
   this.mockScope.showBusStopDetail('Buraczana');
-  assert.equal(this.mockScope.busStop,'Buraczana','Przefiltrowano przystanki po nazwie przystanku');
+  assert.equal(this.mockScope.busStop,'Buraczana','Bus stops filtered by bus stop name - filtered');
 
   this.mockScope.getDetails('145', 'Tuwima', '0706', 'Grenadierów', 1);
-  assert.equal(this.mockScope.selectedBusStopIndex,1,'Odczyt indeksu wybranego odjazdu z tablicy wszystkich odjazdów');
+  assert.equal(this.mockScope.selectedBusStopIndex,1,'Reading index of selected bus trip from the departures array - read');
 
   this.mockScope.getDetails('145', 'Tuwima', '0706', 'Grenadierów', 1);
   assert.deepEqual(this.mockScope.pastBusStops
     ,["Strzelców"]
-    ,'Stworzenie tablicy "przeszłych" przystanków');
+    ,'Creating array of the "past" bus stops - created');
 
   this.mockScope.getDetails('145', 'Tuwima', '0706', 'Grenadierów', 1);
   assert.deepEqual(this.mockScope.remainingBusStops
     ,['Grenadierów', 'Buraczana', 'Nałkowskiej', 'Źródło Marii', 'Brzechwy', 'Tuwima']
-    ,'Stworzenie tablicy "przyszłych" przystanków');
+    ,'Creating array of the "future" bus stops - created');
 
   this.mockScope.getDetails('145', 'Tuwima', '0706', 'Grenadierów', 1);
   assert.deepEqual(this.mockScope.timetable
@@ -114,7 +114,6 @@ QUnit.test('Filtrowanie danych', function(assert) {
         ]
       }
     ]
-    ,'Odczyt godzin odjazdu konkretnego przejazdu autobusu');
-  debugger;
+    ,'Reading timetable of a single/selected trip - read');
 });
 
