@@ -1,8 +1,12 @@
-QUnit.module('Bus stops controller',{
+QUnit.module('Favourites controller',{
   beforeEach: function() {
     this.mockScope = {};
     this.uibModal = {
       open: function(){}
+    };
+    this.localStorageService = {
+      get: function(){},
+      set: function(){}
     };
     this.busStopService = {
       stops: [
@@ -76,44 +80,46 @@ QUnit.module('Bus stops controller',{
       }
     };
 
-    this.busStopsController = busStopsController
-      (this.mockScope, this.busStopService, this.uibModal, this.lineDetailsService)
+    this.favouritesCtrl = favouritesCtrl
+    (this.mockScope, this.localStorageService, this.busStopService, this.lineDetailsService, this.uibModal)
   }
-  });
+});
 
+QUnit.test('Most popular bus stops', function(assert) {
 
-QUnit.test('Filtering data from API', function(assert) {
-  this.mockScope.showBusStopDetail('Buraczana');
-  assert.equal(this.mockScope.busStop,'Buraczana','Bus stops filtered by bus stop name - filtered');
+  this.mockScope.sort([{name:"Przystanek 1", count:1},{name: "Przystanek 2", count:2}]);
+  assert.deepEqual(this.mockScope.result,
+    [
+    {
+      "count": 2,
+      "name": "Przystanek 2"
+    },
+    {
+      "count": 1,
+      "name": "Przystanek 1"
+    }
+    ], 'Sorting most popular bus stops by likes (descending) - sorted');
 
-  this.mockScope.getDetails('145', 'Tuwima', '0706', 'Grenadierów', 1);
-  assert.equal(this.mockScope.selectedBusStopIndex,1,'Reading index of selected bus trip from the departures array - read');
+  this.mockScope.newBusStopObject("Przystanek 1", 2);
+  assert.notDeepEqual(this.mockScope.newBusStopObjectInstance,
+    {
+      "count": 2,
+      "name": "Przystanek 1"
+    }, "Creating new bus stop object with TWO arguments ('name', count') - created");
 
-  this.mockScope.getDetails('145', 'Tuwima', '0706', 'Grenadierów', 1);
-  assert.deepEqual(this.mockScope.pastBusStops
-    ,["Strzelców"]
-    ,'Creating array of the "past" bus stops - created');
+  this.mockScope.newBusStopObject("Przystanek 1", 2, 3);
+  assert.notDeepEqual(this.mockScope.newBusStopObjectInstance,
+    {
+      "count": 2,
+      "name": "Przystanek 1"
+    }, "Creating new bus stop object with THREE OR MORE arguments - created");
 
-  this.mockScope.getDetails('145', 'Tuwima', '0706', 'Grenadierów', 1);
-  assert.deepEqual(this.mockScope.remainingBusStops
-    ,['Grenadierów', 'Buraczana', 'Nałkowskiej', 'Źródło Marii', 'Brzechwy', 'Tuwima']
-    ,'Creating array of the "future" bus stops - created');
+  this.mockScope.newBusStopObject();
+  assert.deepEqual(this.mockScope.newBusStopObjectInstance,
+    {}, "Creating new bus stop object with NO arguments - no object created");
 
-  this.mockScope.getDetails('145', 'Tuwima', '0706', 'Grenadierów', 1);
-  assert.deepEqual(this.mockScope.timetable
-    ,[{
-        "index": 1,
-        "timetable": [
-          "0735",
-          "0736",
-          "0739",
-          "0740",
-          "0741",
-          "0743",
-          "0751"
-        ]
-      }
-    ]
-    ,'Reading timetable of a single/selected trip - read');
+  this.mockScope.newBusStopObject(" ");
+  assert.deepEqual(this.mockScope.newBusStopObjectInstance,
+    {}, "Creating new bus stop object with SPACE in name argument - no object created");
 });
 

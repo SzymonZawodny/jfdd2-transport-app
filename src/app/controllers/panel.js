@@ -5,7 +5,10 @@ function panelController($scope, $log) {
   $scope.isCollapsed = true;
 
   $scope.selectTab = function (setTab) {
-    $scope.tab = setTab;
+    if (setTab >0 && setTab<=4){
+      $scope.tab = setTab;
+    }
+    else $scope.tab = 1;
   };
 
   $scope.ifTabSelected = function (checkTab) {
