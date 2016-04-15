@@ -1,5 +1,5 @@
 function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService, $uibModal, $log) {
-  $log.info('loading service content: simulation server, function to viev');
+  $log.info('loaded service content: simulation server, function to view');
   $scope.oneAtATime = true;
 
   //symulacja serwera
@@ -64,6 +64,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
     }
 
     var selected = $('#selectedBusStop').val().trim();
+    $log.info('add busstop to favorites: ' + selected);
     var favouriteBusStopsNames = $scope.favoriteBusStops.map(function (stop) {
       return stop.name;
     });

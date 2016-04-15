@@ -34,9 +34,10 @@ function busStopsController($scope,busStopService,$uibModal, lineDetailsService)
     $scope.pastBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice(0,$scope.selectedBusStopIndex);
     $scope.remainingBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice($scope.selectedBusStopIndex);
 
-    function openModal() {
+    function openModal($log) {
+      $log.info('opened modal');
       $uibModal.open({
-        animation: true,
+      animation: true,
         templateUrl: 'templates/busLineDetailsTemplate.html',
         controller: 'ModalInstanceCtrl',
         size: 'md',
