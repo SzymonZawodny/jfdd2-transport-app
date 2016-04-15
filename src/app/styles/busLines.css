@@ -1,0 +1,9 @@
+.panel.panel-primary.no-padding{
+  padding: 0;
+}
+
+.panel-heading.white{
+  color: #FFF;
+  font-size: 22px;
+  font-weight: bold;
+}

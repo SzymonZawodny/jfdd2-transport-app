@@ -15,6 +15,7 @@
   <link href="styles/frame.css" rel="stylesheet">
   <link href="styles/favorites.css" rel="stylesheet">
   <link href="styles/busStops.css" rel="stylesheet">
+  <link href="styles/busLines.css" rel="stylesheet">
 </head>
 <body ng-controller="panelController">
 <!--TOP BAR-->
@@ -162,8 +163,15 @@
        </div>
     </div>
 
-   <div class="panel" ng-show=ifTabSelected(2)>
-      <span>TAB 2</span>
+   <div ng-controller="linesCtrl" class="panel container-fluid" ng-show=ifTabSelected(2)>
+     <div class="panel panel-primary no-padding col-sm-5">
+       <div class="panel-heading white">Wybierz linię:</div>
+       <div class="panel-body">
+         <ul>
+           <li ng-click="" ng-repeat="busLine in linesDetails">{{busLine.line}}</li>
+         </ul>
+       </div>
+     </div>
 
     </div>
     <div class="panel" ng-show=ifTabSelected(3)>
@@ -278,6 +286,7 @@
 <script src="controllers/panel.js"></script>
 <script src="controllers/favourites.js"></script>
 <script src="controllers/busStops.js"></script>
+<script src="controllers/linesCtrl.js"></script>
 <script src="app.js"></script>
 <script src="services/busStopsService.js"></script>
 <script src="services/lineDetailsService.js"></script>

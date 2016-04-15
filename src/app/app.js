@@ -3,6 +3,7 @@
     ['ngAnimate', 'ui.bootstrap', 'LocalStorageModule'])
     .controller('panelController', panelController)
     .controller('favouritesCtrl', favouritesCtrl)
+    .controller('linesCtrl', linesCtrl)
     .controller('busStopsController', busStopsController)
     .controller('ModalInstanceCtrl', closeLineDetailsModal)
     .controller('ModalInstanceCtrl', googlePlusModalDismiss)

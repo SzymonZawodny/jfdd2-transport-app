@@ -1,6 +1,6 @@
 function panelController($scope) {
   $scope.accordion = 0;
-  $scope.tab = 1;
+  $scope.tab = 2;
   $scope.isCollapsed = true;
 
   $scope.selectTab = function (setTab) {
