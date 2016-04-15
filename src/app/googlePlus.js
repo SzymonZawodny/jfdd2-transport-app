@@ -24,7 +24,6 @@
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
-
     $('.btn.btn-primary.signed-in-as').addClass('invisible');
     $('.btn.btn-warning.googleplus-button-sign-out').addClass('invisible');
     $('.btn.btn-primary.googleplus-button').removeClass('invisible');
@@ -33,3 +32,4 @@
     $('.btn.btn-default.btn-lg.button-topbar').eq(3).addClass('btn-favourites');
     $('.btn.btn-default.btn-lg.button-topbar').eq(4).removeClass('btn-favourites');
   }
+
