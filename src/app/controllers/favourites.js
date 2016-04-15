@@ -5,7 +5,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   $scope.busStops = busStopService.getStops();
   $scope.linesDetails = lineDetailsService.getLinesDetails();
   $scope.favoriteBusStops = localStorageService.get('favoriteBusStop') || [];
-  $scope.busLines = uniqueLines();
+  $scope.busLines = uniqueLines($scope.favoriteBusStops);
   $scope.mostPopularBusStops = [];
 
   //funkcje do widoku
@@ -15,33 +15,44 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   $scope.filterFavouritesByLines = filterFavouritesByLines;
   $scope.getDetails = getDetails;
   $scope.showMostPopularStops = showMostPopularStops;
+  $scope.sort = sort;
+  $scope.newBusStopObject = newBusStopObject;
+  $scope.uniqueLines = uniqueLines;
   readMostPopularFromLocalStorage();
 
   function submit(key, val) {
     return localStorageService.set(key, val);
   }
 
-  function readMostPopularFromLocalStorage(){
-
-    $scope.mostPopularBusStops=[];
-
-    var BusStopObject = function(name, count) {
-      this.name = name;
-      this.count = count;
-    };
-
-    for (var i = 0; i < localStorage.length; i++){
-      $scope.newBusObject =
-        new BusStopObject(localStorage.key(i).split('.')[1],
-          Number(localStorage.getItem(localStorage.key(i))));
-      $scope.mostPopularBusStops.push($scope.newBusObject);
-    }
-    $scope.mostPopularBusStops.pop();
-    $scope.mostPopularBusStops
+  function sort(arrayToSort){
+      $scope.result = arrayToSort
       .sort(function(a,b) {
         return (a.count > b.count) ? 1 : ((b.count > a.count) ? -1 : 0);
       })
       .reverse();
+  }
+
+  function newBusStopObject (name, count){
+    $scope.newBusStopObjectInstance = {};
+    if (name !== "" && name !== " " && name !== undefined){
+      var BusStopObject = function(name, count) {
+        this.name = name;
+        this.count = count;
+      };
+      $scope.newBusStopObjectInstance = new BusStopObject(name, count);
+    }
+  }
+
+  function readMostPopularFromLocalStorage(){
+
+    $scope.mostPopularBusStops=[];
+    for (var i = 0; i < localStorage.length; i++){
+      newBusStopObject(localStorage.key(i).split('.')[1],
+        Number(localStorage.getItem(localStorage.key(i))));
+      $scope.mostPopularBusStops.push($scope.newBusStopObjectInstance);
+    }
+    $scope.mostPopularBusStops.pop();
+    sort($scope.mostPopularBusStops);
   }
 
   function addBusStopToFavorites() {
@@ -73,7 +84,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
     function updateFavouriteBusStops() {
       $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
       $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
-      $scope.busLines = uniqueLines();
+      $scope.busLines = uniqueLines($scope.favoriteBusStops);
 
       //saving count for each busStop on click
       var currentCount = localStorageService.get($scope.busStops[selectedBusStopIndex].name);
@@ -83,16 +94,15 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
     }
   }
 
-  function uniqueLines() {
-    if ($scope.favoriteBusStops) {
-      return $scope.favoriteBusStops.map(function (stop) {
+  function uniqueLines(favoriteBusStops) {
+    if (favoriteBusStops) {
+      return favoriteBusStops.map(function (stop) {
         return stop.bus.map(function (bus) {
           return bus.line;
         });
       }).reduce(function (a, b) {
         return a.concat(b);
       }, []).filter(onlyUnique);
-
       function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
       }
@@ -106,7 +116,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
     }
     $scope.favoriteBusStops.splice(idx, 1);
     $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
-    $scope.busLines = uniqueLines();
+    $scope.busLines = uniqueLines($scope.favoriteBusStops);
   }
 
   function filterFavouritesByLines() {
