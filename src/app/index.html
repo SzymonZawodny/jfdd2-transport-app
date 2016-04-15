@@ -164,12 +164,24 @@
     </div>
 
    <div ng-controller="linesCtrl" class="panel container-fluid" ng-show=ifTabSelected(2)>
-     <div class="panel panel-primary no-padding col-sm-5">
+     <div class="panel panel-primary no-padding col-sm-3">
        <div class="panel-heading white">Wybierz linię:</div>
        <div class="panel-body">
          <ul>
-           <li ng-click="" ng-repeat="busLine in linesDetails">{{busLine.line}}</li>
+           <li class="label label-primary label-lines" ng-repeat="busLine in linesDetails" ng-click="readLineStops(busLine.line)">{{busLine.line}}</li>
          </ul>
+       </div>
+     </div>
+     <div class="panel panel-primary no-padding col-sm-6" ng-repeat="item in selectedLineObject">
+       <div class="panel-heading white">Lista przystanków:</div>
+       <div class="panel-body">
+         <table class="destination-label" ng-repeat="destination in item.destination">
+           <th>Kierunek: {{destination.destinationName}}</th>
+           <tr ng-repeat="busStop in destination.busStops">
+             <td class="label label-primary list-item-block label-lines">{{busStop}}</td>
+             <td><img src="images/others/line-stop-icon.png"></td>
+           </tr>
+         </table>
        </div>
      </div>
 

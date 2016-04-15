@@ -1,9 +1,34 @@
-.panel.panel-primary.no-padding{
+.panel.panel-primary.no-padding {
   padding: 0;
 }
 
-.panel-heading.white{
+.panel-heading.white {
   color: #FFF;
   font-size: 22px;
   font-weight: bold;
+}
+
+.label-lines {
+  font-size: 20px;
+  margin: 0 8px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.label-lines:hover{
+  background-color: #337ab7;
+}
+
+.destination-label {
+  width: 300px;
+  font-size: 24px;
+  color: #337ab7;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.label.label-primary.list-item-block {
+  display: block;
+  width: 200px;
+  margin: 3px;
 }
