@@ -1,5 +1,7 @@
 .panel.panel-primary.no-padding {
   padding: 0;
+  margin-right: 20px;
+  max-width: 340px;
 }
 
 .panel-heading.white {
@@ -15,8 +17,8 @@
   cursor: hand;
 }
 
-.label-lines:hover{
-  background-color: #337ab7;
+.label#lineNo:hover{
+  background-color: #000367;
 }
 
 .destination-label {
@@ -24,7 +26,20 @@
   font-size: 24px;
   color: #337ab7;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.destination-label th{
+  text-align: center;
+  line-height: 50px;
+}
+
+.label#busStop:hover{
+  background-color: #000367;
+}
+
+.label{
+  transition: all 0.3s ease;
 }
 
 .label.label-primary.list-item-block {

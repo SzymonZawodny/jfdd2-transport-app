@@ -65,7 +65,7 @@
         destination: [
           {
             destinationName: 'Tuwima',
-            busStops: ['Strzelców', 'Grenadierów', 'Buraczana', 'Nałkowskiej', 'Źródło Marii', 'Brzechwy', 'Tuwima'],
+            busStops: ['Strzelców', 'Grenadierów', 'Fiołkowa', 'Nałkowskiej', 'Źródło Marii', 'Brzechwy', 'Tuwima'],
             departure: [
               {
                 index: 0,

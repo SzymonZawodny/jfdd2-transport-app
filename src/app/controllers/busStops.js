@@ -3,12 +3,7 @@ function busStopsController($scope,busStopService,$uibModal, lineDetailsService)
   //symulacja serwera
   $scope.busStops = busStopService.getStops();
   $scope.linesDetails = lineDetailsService.getLinesDetails();
-  $scope.showBusStopDetail = showBusStopDetail;
   $scope.getDetails = getDetails;
-
-  function showBusStopDetail(busStop){
-    $scope.busStop= busStop;
-  }
 
   function getDetails(busLine, busDestination, departureTime, busStopName, departureIndex) {
 

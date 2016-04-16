@@ -155,7 +155,7 @@
                           ng-repeat="departure in bus.departures"
                           ng-click="getDetails(bus.line, bus.destination, departure, busStop.name, $index)"
                 >{{departure}}
-                      </span></h4>
+                </span></h4>
               </div>
             </td>
           </tr>
@@ -168,18 +168,19 @@
        <div class="panel-heading white">Wybierz linię:</div>
        <div class="panel-body">
          <ul>
-           <li class="label label-primary label-lines" ng-repeat="busLine in linesDetails" ng-click="readLineStops(busLine.line)">{{busLine.line}}</li>
+           <li class="label label-primary label-lines" id="lineNo" ng-repeat="busLine in linesDetails"
+               ng-click="readLineStops(busLine.line)">{{busLine.line}}</li>
          </ul>
        </div>
      </div>
-     <div class="panel panel-primary no-padding col-sm-6" ng-repeat="item in selectedLineObject">
+     <div class=" panel panel-primary no-padding col-sm-6" ng-repeat="item in selectedLineObject">
        <div class="panel-heading white">Lista przystanków:</div>
        <div class="panel-body">
          <table class="destination-label" ng-repeat="destination in item.destination">
-           <th>Kierunek: {{destination.destinationName}}</th>
+           <th class="col-sm-8" colspan="2">Kierunek: {{destination.destinationName}}</th>
            <tr ng-repeat="busStop in destination.busStops">
-             <td class="label label-primary list-item-block label-lines">{{busStop}}</td>
              <td><img src="images/others/line-stop-icon.png"></td>
+             <td class="label label-primary list-item-block label-lines" id="busStop" ng-click="readSelectedBusStop(busStop)">{{busStop}}</td>
            </tr>
          </table>
        </div>

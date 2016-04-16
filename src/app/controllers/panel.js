@@ -12,5 +12,9 @@ function panelController($scope) {
 
   $scope.ifTabSelected = function (checkTab) {
     return $scope.tab === checkTab;
-  }
+  };
+
+  $scope.showBusStopDetail = function showBusStopDetail(busStop){
+    $scope.busStop= busStop;
+  };
 }
