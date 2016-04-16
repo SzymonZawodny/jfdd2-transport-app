@@ -15,6 +15,10 @@ function panelController($scope) {
   };
 
   $scope.showBusStopDetail = function showBusStopDetail(busStop){
-    $scope.busStop= busStop;
+    $scope.busStop = busStop;
+  };
+
+  $scope.readSelectedBusStop = function readSelectedBusStop(busStop){
+    $scope.selectTab(1);
   };
 }
