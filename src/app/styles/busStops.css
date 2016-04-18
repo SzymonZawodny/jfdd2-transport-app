@@ -18,12 +18,19 @@
   }
 }
 
+.hover-hand {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.busStopScrollList li {
+  transition: all 0.3s ease;
+}
+
 .busStopScrollList li:hover {
   background-color: #337ab7;
   color: white;
   font-weight: bold;
-  cursor: pointer;
-  cursor: hand;
 }
 
 .stopsHeader {
