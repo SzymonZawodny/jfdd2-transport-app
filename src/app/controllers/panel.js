@@ -1,10 +1,14 @@
 var selectedBusStopName = "";
 var selectedLineName = "";
 
-function panelController($scope) {
+function panelController($scope, busStopService, lineDetailsService) {
   $scope.accordion = 0;
   $scope.tab = 1;
   $scope.isCollapsed = true;
+
+  //symulacja serwera
+  $scope.busStops = busStopService.getStops();
+  $scope.linesDetails = lineDetailsService.getLinesDetails();
 
   $scope.selectTab = function (setTab) {
     if (setTab >0 && setTab<=4){
@@ -29,5 +33,12 @@ function panelController($scope) {
   $scope.readSelectedLine = function readSelectedLine(line){
     $scope.selectTab(2);
     selectedLineName = line;
-  }
+  };
+
+  $scope.changeBusStopDetail = function changeBusStopDetail(selectedBusStopName){
+    $scope.selectedBusStop = $scope.busStops.filter(function(singleBusStop){
+      return singleBusStop.name === selectedBusStopName;
+    });
+    $scope.showBusStopDetail($scope.selectedBusStop[0]);
+  };
 }

@@ -1,5 +1,4 @@
-function linesCtrl($scope, lineDetailsService) {
-  $scope.linesDetails = lineDetailsService.getLinesDetails();
+function linesCtrl($scope) {
   $scope.readLineStops = readLineStops;
 
   function readLineStops(busLine){

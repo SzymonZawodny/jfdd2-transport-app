@@ -1,24 +1,13 @@
-function busStopsController($scope,busStopService,$uibModal, lineDetailsService) {
+function busStopsController($scope,$uibModal) {
 
-  //symulacja serwera
-  $scope.busStops = busStopService.getStops();
-
-  $scope.linesDetails = lineDetailsService.getLinesDetails();
   $scope.selectedBusStopFromLinesTab = [];
 
   $scope.getDetails = getDetails;
-  $scope.changeBusStopDetail = changeBusStopDetail;
+
 
   $scope.$watch('ifTabSelected(1)', function() {
     $scope.changeBusStopDetail(selectedBusStopName);
      });
-
-  function changeBusStopDetail(selectedBusStopName){
-    $scope.selectedBusStop = $scope.busStops.filter(function(singleBusStop){
-      return singleBusStop.name === selectedBusStopName;
-    });
-    $scope.showBusStopDetail($scope.selectedBusStop[0]);
-  }
 
   function getDetails(busLine, busDestination, departureTime, busStopName, departureIndex) {
 

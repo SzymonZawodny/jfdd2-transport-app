@@ -1,11 +1,6 @@
 function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService, $uibModal) {
   $scope.oneAtATime = true;
 
-  //symulacja serwera
-  $scope.busStops = busStopService.getStops();
-  $scope.linesDetails = lineDetailsService.getLinesDetails();
-
-
   $scope.allUsersFavourites = localStorageService.get('allUsersFavourites') || [];
   $scope.userEmail = userEmail;
   $scope.favoriteBusStops = [];
