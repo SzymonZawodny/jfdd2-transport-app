@@ -5,9 +5,19 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   //symulacja serwera
   $scope.busStops = busStopService.getStops();
   $scope.linesDetails = lineDetailsService.getLinesDetails();
-  $scope.favoriteBusStops = localStorageService.get('favoriteBusStop') || [];
+
+
+  $scope.allUsersFavourites = localStorageService.get('allUsersFavourites') || [];
+  $scope.userEmail = userEmail;
+  $scope.favoriteBusStops = [];
+  $scope.user = {};
+  $scope.filteredUser = {};
   $scope.busLines = uniqueLines($scope.favoriteBusStops);
   $scope.mostPopularBusStops = [];
+
+  $scope.$watch('ifTabSelected(4)', function() {
+    readFavouriteBusStops();
+  });
 
   //funkcje do widoku
   $scope.submit = submit;
@@ -83,9 +93,22 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
       }
     }
 
+    function createFilteredUser() {
+      $scope.filteredUser = {
+        userEmail: userEmail,
+        favouriteBusStops: $scope.favoriteBusStops
+      };
+    }
+
     function updateFavouriteBusStops() {
+      readFavouriteBusStops();
+
       $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
-      $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
+
+      createFilteredUser();
+
+      $scope.allUsersFavourites.push($scope.filteredUser);
+      $scope.submit('allUsersFavourites', $scope.allUsersFavourites);
       $scope.busLines = uniqueLines($scope.favoriteBusStops);
 
       //saving count for each busStop on click
@@ -93,6 +116,15 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
       $scope.submit($scope.busStops[selectedBusStopIndex].name, currentCount+1);
 
       readMostPopularFromLocalStorage();
+    }
+  }
+
+  function readFavouriteBusStops(){
+    $scope.user = $scope.allUsersFavourites.filter(function(user){
+      return user.userEmail === userEmail;
+    });
+    if ($scope.user[0] !== undefined) {
+      $scope.favoriteBusStops = $scope.user[0].favouriteBusStops || [];
     }
   }
 
@@ -118,7 +150,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
       e.stopPropagation();
     }
     $scope.favoriteBusStops.splice(idx, 1);
-    $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
+    $scope.submit('allUsersFavourites', $scope.allUsersFavourites);
     $scope.busLines = uniqueLines($scope.favoriteBusStops);
   }
 
