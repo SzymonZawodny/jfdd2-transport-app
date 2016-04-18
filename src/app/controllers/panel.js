@@ -1,6 +1,6 @@
 function panelController($scope) {
   $scope.accordion = 0;
-  $scope.tab = 1;
+  $scope.tab = 2;
   $scope.isCollapsed = true;
 
   $scope.selectTab = function (setTab) {
@@ -12,5 +12,13 @@ function panelController($scope) {
 
   $scope.ifTabSelected = function (checkTab) {
     return $scope.tab === checkTab;
-  }
+  };
+
+  $scope.showBusStopDetail = function showBusStopDetail(busStop){
+    $scope.busStop = busStop;
+  };
+
+  $scope.readSelectedBusStop = function readSelectedBusStop(busStop){
+    $scope.selectTab(1);
+  };
 }

@@ -2,8 +2,9 @@
   border: solid 4px;
   border-color: #337ab7;
   height: 245px;
-  width:158px;
-  overflow:hidden; overflow-y:scroll;
+  width: 158px;
+  overflow: hidden;
+  overflow-y: scroll;
   border-radius: 5px;
   color: #337ab7;
   font-size: 17px;
@@ -12,7 +13,7 @@
 
 @media (max-width: 768px) {
   .busStopScrollList {
-    min-width:94%;
+    min-width: 94%;
     font-size: 30px;
   }
 }
@@ -25,7 +26,7 @@
   cursor: hand;
 }
 
-.stopsHeader{
+.stopsHeader {
   color: #337ab7;
   margin-left: 35px;
   font-size: 40px;
@@ -34,7 +35,16 @@
   font-weight: bold;
 }
 
-.busStopsFiltr{
+.busStopsFiltr {
   color: #337ab7;
-  margin-left: 35px ;
+  margin-left: 35px;
+}
+
+.bus-stop-label {
+  border: solid 2px #337ab7;
+  border-bottom-color: #fff;
+  background-color: #337ab7;
+  color: #FFF;
+  font-size: 22px;
+  font-weight: bold;
 }
