@@ -5,10 +5,17 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   $scope.busStops = busStopService.getStops();
   $scope.linesDetails = lineDetailsService.getLinesDetails();
   $scope.allUsersFavourites = localStorageService.get('allUsersFavourites') || [];
-  $scope.filteredUser = {};
+  $scope.userEmail = userEmail;
   $scope.favoriteBusStops = [];
+  $scope.user = {};
+  $scope.filteredUser = {};
   $scope.busLines = uniqueLines($scope.favoriteBusStops);
   $scope.mostPopularBusStops = [];
+
+  $scope.$watch('ifTabSelected(4)', function() {
+    console.log("Tab 4 - changed");
+    readFavouriteBusStops();
+  });
 
   //funkcje do widoku
   $scope.submit = submit;
@@ -21,6 +28,13 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   $scope.newBusStopObject = newBusStopObject;
   $scope.uniqueLines = uniqueLines;
   readMostPopularFromLocalStorage();
+
+  function readFavouriteBusStops(){
+    $scope.user = $scope.allUsersFavourites.filter(function(user){
+      return user.userEmail === userEmail;
+    });
+    $scope.favoriteBusStops = $scope.user[0].favouriteBusStops || [];
+  }
 
   function submit(key, val) {
     return localStorageService.set(key, val);
@@ -84,13 +98,15 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
     }
 
     function updateFavouriteBusStops() {
-      debugger;
-      $scope.userEmail = userEmail;
+      readFavouriteBusStops();
+
       $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
+
       $scope.filteredUser = {
         userEmail: userEmail,
         favouriteBusStops: $scope.favoriteBusStops
       };
+
       $scope.allUsersFavourites.push($scope.filteredUser);
       $scope.submit('allUsersFavourites', $scope.allUsersFavourites);
       $scope.busLines = uniqueLines($scope.favoriteBusStops);
