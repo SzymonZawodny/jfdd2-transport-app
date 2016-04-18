@@ -1,4 +1,4 @@
-function busStopsController($scope,busStopService,$uibModal, lineDetailsService) {
+function busStopsController($scope,busStopService,$uibModal, lineDetailsService, $log) {
 
   //symulacja serwera
   $scope.busStops = busStopService.getStops();
@@ -34,7 +34,7 @@ function busStopsController($scope,busStopService,$uibModal, lineDetailsService)
     $scope.pastBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice(0,$scope.selectedBusStopIndex);
     $scope.remainingBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice($scope.selectedBusStopIndex);
 
-    function openModal($log) {
+    function openModal() {
       $log.info('opened modal');
       $uibModal.open({
       animation: true,

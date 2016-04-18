@@ -1,7 +1,7 @@
 function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService, $uibModal, $log) {
   $log.info('loaded service content: simulation server, function to view');
   $scope.oneAtATime = true;
-
+  var selected = "";
   //symulacja serwera
   $scope.busStops = busStopService.getStops();
   $scope.linesDetails = lineDetailsService.getLinesDetails();
@@ -63,7 +63,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
       return;
     }
 
-    var selected = $('#selectedBusStop').val().trim();
+    selected = $('#selectedBusStop').val().trim();
     $log.info('add busstop to favorites: ' + selected);
     var favouriteBusStopsNames = $scope.favoriteBusStops.map(function (stop) {
       return stop.name;
@@ -112,6 +112,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   }
 
   function removeFavourite(idx, e) {
+    $log.warn('remove busstop from favorites: ' + selected);
     if (e) {
       e.preventDefault();
       e.stopPropagation();
