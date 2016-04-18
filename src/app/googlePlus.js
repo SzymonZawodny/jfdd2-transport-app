@@ -10,16 +10,20 @@ function onSignIn(googleUser) {
     console.log("Image URL: " + profile.getImageUrl());
     console.log("Email: " + profile.getEmail());
     userEmail = profile.getEmail();
+    var $buttonSidebar = $('.btn.btn-default.btn-lg.button-sidebar');
+    var $signedInAs = $('.btn.btn-primary.signed-in-as');
+    var $googlePlusButtonSignOut = $('.btn.btn-warning.googleplus-button-sign-out');
+    var $googlePlusButton = $('.btn.btn-primary.googleplus-button');
 
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
-    $('.btn.btn-primary.signed-in-as').removeClass('invisible').text(profile.getName());
-    $('.btn.btn-warning.googleplus-button-sign-out').removeClass('invisible');
-    $('.btn.btn-primary.googleplus-button').addClass('invisible');
-    $('.btn.btn-default.btn-lg.button-sidebar').eq(3).removeClass('btn-favourites');
-    $('.btn.btn-default.btn-lg.button-sidebar').eq(4).addClass('btn-favourites');
-    $('.btn.btn-default.btn-lg.button-topbar').eq(3).removeClass('btn-favourites');
-    $('.btn.btn-default.btn-lg.button-topbar').eq(4).addClass('btn-favourites');
+    $signedInAs.removeClass('invisible').text(profile.getName());
+    $googlePlusButtonSignOut.removeClass('invisible');
+    $googlePlusButton.addClass('invisible');
+    $buttonSidebar.eq(3).removeClass('btn-favourites');
+    $buttonSidebar.eq(4).addClass('btn-favourites');
+    $buttonSidebar.eq(3).removeClass('btn-favourites');
+    $buttonSidebar.eq(4).addClass('btn-favourites');
   }
 
   function signOut() {
@@ -27,12 +31,12 @@ function onSignIn(googleUser) {
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
-    $('.btn.btn-primary.signed-in-as').addClass('invisible');
-    $('.btn.btn-warning.googleplus-button-sign-out').addClass('invisible');
-    $('.btn.btn-primary.googleplus-button').removeClass('invisible');
-    $('.btn.btn-default.btn-lg.button-sidebar').eq(3).addClass('btn-favourites');
-    $('.btn.btn-default.btn-lg.button-sidebar').eq(4).removeClass('btn-favourites');
-    $('.btn.btn-default.btn-lg.button-topbar').eq(3).addClass('btn-favourites');
-    $('.btn.btn-default.btn-lg.button-topbar').eq(4).removeClass('btn-favourites');
+    $signedInAs.addClass('invisible');
+    $googlePlusButtonSignOut.addClass('invisible');
+    $googlePlusButton.removeClass('invisible');
+    $buttonSidebar.eq(3).addClass('btn-favourites');
+    $buttonSidebar.eq(4).removeClass('btn-favourites');
+    $buttonSidebar.eq(3).addClass('btn-favourites');
+    $buttonSidebar.eq(4).removeClass('btn-favourites');
   }
 

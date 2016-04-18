@@ -15,7 +15,6 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   $scope.mostPopularBusStops = [];
 
   $scope.$watch('ifTabSelected(4)', function() {
-    console.log("Tab 4 - changed");
     readFavouriteBusStops();
   });
 
