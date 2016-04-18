@@ -4,7 +4,9 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   //symulacja serwera
   $scope.busStops = busStopService.getStops();
   $scope.linesDetails = lineDetailsService.getLinesDetails();
-  $scope.favoriteBusStops = localStorageService.get('favoriteBusStop') || [];
+  $scope.allUsersFavourites = localStorageService.get('allUsersFavourites') || [];
+  $scope.filteredUser = {};
+  $scope.favoriteBusStops = [];
   $scope.busLines = uniqueLines($scope.favoriteBusStops);
   $scope.mostPopularBusStops = [];
 
@@ -82,8 +84,15 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
     }
 
     function updateFavouriteBusStops() {
+      debugger;
+      $scope.userEmail = userEmail;
       $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
-      $scope.submit('favoriteBusStop', $scope.favoriteBusStops);
+      $scope.filteredUser = {
+        userEmail: userEmail,
+        favouriteBusStops: $scope.favoriteBusStops
+      };
+      $scope.allUsersFavourites.push($scope.filteredUser);
+      $scope.submit('allUsersFavourites', $scope.allUsersFavourites);
       $scope.busLines = uniqueLines($scope.favoriteBusStops);
 
       //saving count for each busStop on click
