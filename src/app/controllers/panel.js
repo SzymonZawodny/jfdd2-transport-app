@@ -1,3 +1,5 @@
+var selectedBusStopName = "";
+
 function panelController($scope) {
   $scope.accordion = 0;
   $scope.tab = 2;
@@ -20,5 +22,6 @@ function panelController($scope) {
 
   $scope.readSelectedBusStop = function readSelectedBusStop(busStop){
     $scope.selectTab(1);
+    selectedBusStopName = busStop;
   };
 }
