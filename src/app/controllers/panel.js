@@ -1,8 +1,9 @@
 var selectedBusStopName = "";
+var selectedLineName = "";
 
 function panelController($scope) {
   $scope.accordion = 0;
-  $scope.tab = 2;
+  $scope.tab = 1;
   $scope.isCollapsed = true;
 
   $scope.selectTab = function (setTab) {
@@ -24,4 +25,9 @@ function panelController($scope) {
     $scope.selectTab(1);
     selectedBusStopName = busStop;
   };
+
+  $scope.readSelectedLine = function readSelectedLine(line){
+    $scope.selectTab(2);
+    selectedLineName = line;
+  }
 }
