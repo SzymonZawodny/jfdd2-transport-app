@@ -1,4 +1,4 @@
-function favouritesCtrl($scope, localStorageService, $uibModal, $log)
+function favouritesCtrl($scope, localStorageService, $uibModal, $log) {
 $log.info('loaded service content: simulation server, function to view');
   $scope.oneAtATime = true;
   var selected = "";
