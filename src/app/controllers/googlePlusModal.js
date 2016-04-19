@@ -1,4 +1,4 @@
-function googlePlusModalCtrl($scope, $uibModal){
+function googlePlusModalCtrl($scope, $uibModal, $log){
 
   $scope.items = ['item1'];
 
@@ -27,7 +27,10 @@ function googlePlusModalCtrl($scope, $uibModal){
         'height': 50,
         'longtitle': true,
         'theme': 'dark',
-        'onsuccess': onSignIn,
+        'onsuccess': function(googleUser) {
+          onSignIn(googleUser);
+          $log.info('user sign in');
+        },
         'onfailure': signOut
       });
     });
