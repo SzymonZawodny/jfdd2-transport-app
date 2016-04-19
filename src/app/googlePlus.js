@@ -3,6 +3,7 @@ var $buttonSidebar = $('.btn.btn-default.btn-lg.button-sidebar');
 var $signedInAs = $('.btn.btn-primary.signed-in-as');
 var $googlePlusButtonSignOut = $('.btn.btn-warning.googleplus-button-sign-out');
 var $googlePlusButton = $('.btn.btn-primary.googleplus-button');
+var $buttonTopbar = $('.btn.btn-default.btn-lg.button-topbar');
 
 function onSignIn(googleUser) {
 
@@ -22,6 +23,8 @@ function onSignIn(googleUser) {
     $googlePlusButton.addClass('invisible');
     $buttonSidebar.eq(3).removeClass('btn-favourites');
     $buttonSidebar.eq(4).addClass('btn-favourites');
+    $buttonTopbar.eq(3).removeClass('btn-favourites');
+    $buttonTopbar.eq(4).addClass('btn-favourites');
   }
 
   function signOut() {
@@ -34,5 +37,7 @@ function onSignIn(googleUser) {
     $googlePlusButton.removeClass('invisible');
     $buttonSidebar.eq(3).addClass('btn-favourites');
     $buttonSidebar.eq(4).removeClass('btn-favourites');
+    $buttonTopbar.eq(3).addClass('btn-favourites');
+    $buttonTopbar.eq(4).removeClass('btn-favourites');
   }
 

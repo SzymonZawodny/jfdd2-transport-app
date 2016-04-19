@@ -183,7 +183,7 @@
        </div>
      </div>
      <div class=" panel panel-primary no-padding col-sm-6" ng-repeat="item in selectedLineObject">
-       <div class="panel-heading white">Lista przystanków:</div>
+       <div class="panel-heading white">Lista przystanków linii {{item.line}}</div>
        <div class="panel-body">
          <table class="destination-label" ng-repeat="destination in item.destination">
            <th class="col-sm-8" colspan="2">Kierunek: {{destination.destinationName}}</th>

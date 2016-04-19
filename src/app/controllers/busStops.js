@@ -1,4 +1,4 @@
-function busStopsController($scope,$uibModal) {
+function busStopsController($scope, $uibModal) {
 
   $scope.selectedBusStopFromLinesTab = [];
 

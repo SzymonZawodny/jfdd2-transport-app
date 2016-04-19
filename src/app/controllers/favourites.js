@@ -1,4 +1,4 @@
-function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService, $uibModal) {
+function favouritesCtrl($scope, localStorageService, $uibModal) {
   $scope.oneAtATime = true;
 
   $scope.allUsersFavourites = localStorageService.get('allUsersFavourites') || [];
