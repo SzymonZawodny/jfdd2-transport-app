@@ -1,12 +1,7 @@
-function favouritesCtrl($scope, localStorageService, busStopService, lineDetailsService, $uibModal, $log) {
-  $log.info('loaded service content: simulation server, function to view');
+function favouritesCtrl($scope, localStorageService, $uibModal, $log)
+$log.info('loaded service content: simulation server, function to view');
   $scope.oneAtATime = true;
   var selected = "";
-  //symulacja serwera
-  $scope.busStops = busStopService.getStops();
-  $scope.linesDetails = lineDetailsService.getLinesDetails();
-
-
   $scope.allUsersFavourites = localStorageService.get('allUsersFavourites') || [];
   $scope.userEmail = userEmail;
   $scope.favoriteBusStops = [];
