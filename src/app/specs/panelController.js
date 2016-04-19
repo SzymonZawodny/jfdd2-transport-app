@@ -74,8 +74,15 @@ QUnit.module('Panel controller',{
       }
     };
 
+    this.log = {
+      info: function () {
+      },
+      warn: function () {
+      }
+    };
+
     this.panelController = panelController
-    (this.mockScope, this.busStopService, this.lineDetailsService)
+    (this.mockScope, this.busStopService, this.lineDetailsService, this.log)
 
   }
 });

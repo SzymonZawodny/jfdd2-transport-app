@@ -41,8 +41,15 @@ QUnit.module('Bus stops controller',{
       open: function(){}
     };
 
+    this.log = {
+      info: function () {
+      },
+      warn: function () {
+      }
+    };
+
     this.busStopsController = busStopsController
-      (this.mockScope,this.uibModal)
+      (this.mockScope,this.uibModal, this.log)
   }
   });
 
