@@ -74,7 +74,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
     }
 
     selected = $('#selectedBusStop').val().trim();
-    $log.info('add busstop to favorites: ' + selected);
+    $log.info('add bus stop to favorites: ' + selected);
     var favouriteBusStopsNames = $scope.favoriteBusStops.map(function (stop) {
       return stop.name;
     });
@@ -144,7 +144,7 @@ function favouritesCtrl($scope, localStorageService, busStopService, lineDetails
   }
 
   function removeFavourite(idx, e) {
-    $log.warn('remove busstop from favorites: ' + selected);
+      $log.warn('remove bus stop from favorites: ' + selected);
     if (e) {
       e.preventDefault();
       e.stopPropagation();
