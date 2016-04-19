@@ -47,3 +47,8 @@ h4{
 .inactive {
   display: none;
 }
+
+.label.no-hover-effect:hover {
+  cursor: default;
+  background-color: #337ab7;
+}
