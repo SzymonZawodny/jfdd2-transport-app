@@ -1,10 +1,7 @@
-function busStopsController($scope, $uibModal) {
+function busStopsController($scope, $uibModal, $log) {
 
   $scope.selectedBusStopFromLinesTab = [];
-
   $scope.getDetails = getDetails;
-
-
   $scope.$watch('ifTabSelected(1)', function() {
     $scope.changeBusStopDetail(selectedBusStopName);
      });
@@ -34,8 +31,9 @@ function busStopsController($scope, $uibModal) {
     $scope.remainingBusStops = $scope.filteredLineToSpecificDestination[0].busStops.slice($scope.selectedBusStopIndex);
 
     function openModal() {
+      $log.info('opened modal');
       $uibModal.open({
-        animation: true,
+      animation: true,
         templateUrl: 'templates/busLineDetailsTemplate.html',
         controller: 'ModalInstanceCtrl',
         size: 'md',

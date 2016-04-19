@@ -1,6 +1,7 @@
-function favouritesCtrl($scope, localStorageService, $uibModal) {
+function favouritesCtrl($scope, localStorageService, $uibModal, $log) {
+$log.info('loaded service content: simulation server, function to view');
   $scope.oneAtATime = true;
-
+  var selected = "";
   $scope.allUsersFavourites = localStorageService.get('allUsersFavourites') || [];
   $scope.userEmail = userEmail;
   $scope.favoriteBusStops = [];
@@ -67,7 +68,8 @@ function favouritesCtrl($scope, localStorageService, $uibModal) {
       return;
     }
 
-    var selected = $('#selectedBusStop').val().trim();
+    selected = $('#selectedBusStop').val().trim();
+    $log.info('add bus stop to favorites: ' + selected);
     var favouriteBusStopsNames = $scope.favoriteBusStops.map(function (stop) {
       return stop.name;
     });
@@ -137,6 +139,7 @@ function favouritesCtrl($scope, localStorageService, $uibModal) {
   }
 
   function removeFavourite(idx, e) {
+      $log.warn('remove bus stop from favorites: ' + selected);
     if (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -162,7 +165,7 @@ function favouritesCtrl($scope, localStorageService, $uibModal) {
   }
 
   function getDetails(busLine, busDestination, departureTime, busStopName, departureIndex) {
-
+    $log.info('Details initialized');
     $scope.busDetailsArray = [busLine, busDestination, departureTime, busStopName];
     openModal();
 

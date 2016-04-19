@@ -1,7 +1,8 @@
 var selectedBusStopName = "";
 var selectedLineName = "";
 
-function panelController($scope, busStopService, lineDetailsService) {
+function panelController($scope, busStopService, lineDetailsService, $log) {
+  $log.info('panel controller initialized');
   $scope.accordion = 0;
   $scope.tab = 1;
   $scope.isCollapsed = true;
