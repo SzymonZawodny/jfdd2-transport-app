@@ -7,7 +7,11 @@ function panelController($scope, busStopService, lineDetailsService) {
   $scope.isCollapsed = true;
 
   //symulacja serwera
-  $scope.busStops = busStopService.getStops();
+  busStopService.getStops(function(stops){
+    $scope.busStops = stops;
+    $scope.$apply();
+    console.log($scope.busStops);
+  });
   lineDetailsService.getLinesDetails(function(lines) {
     $scope.linesDetails = lines;
   });

@@ -13,7 +13,6 @@
         lines = data;
         callback(lines);
       }
-
     });
 
     this.getLinesDetails = function (callbackFcn) {
