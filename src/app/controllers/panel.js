@@ -8,7 +8,9 @@ function panelController($scope, busStopService, lineDetailsService) {
 
   //symulacja serwera
   $scope.busStops = busStopService.getStops();
-  $scope.linesDetails = lineDetailsService.getLinesDetails();
+  lineDetailsService.getLinesDetails(function(lines) {
+    $scope.linesDetails = lines;
+  });
 
   $scope.selectTab = function (setTab) {
     if (setTab >0 && setTab<=4){

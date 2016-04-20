@@ -4,19 +4,20 @@
 
   function lineDetailsService() {
     var lines = [];
+    var callback;
     $.ajax({
       type: 'GET',
-      url: 'https://isa-api2.herokuapp.com/transport/lines',
+      url: 'http://isa-api-sl.herokuapp.com/api/busLines',
       dataType: 'json',
       success: function(data){
-        stops = data.lines;
-        console.log(data.lines);
+        lines = data;
+        callback(lines);
       }
 
     });
 
-    this.getLinesDetails = function () {
-      return lines;
+    this.getLinesDetails = function (callbackFcn) {
+      callback = callbackFcn;
     }
   }
 })();
