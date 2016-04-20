@@ -14,6 +14,7 @@ function panelController($scope, busStopService, lineDetailsService, $log) {
   $scope.selectTab = function (setTab) {
     if (setTab >0 && setTab<=4){
       $scope.tab = setTab;
+      $scope.isCollapsed = !$scope.isCollapsed
     }
     else $scope.tab = 1;
   };

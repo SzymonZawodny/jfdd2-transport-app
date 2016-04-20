@@ -18,7 +18,7 @@
 }
 
 .destination-label {
-  width: 300px;
+  width: auto;
   font-size: 24px;
   color: #337ab7;
   font-weight: bold;
@@ -40,6 +40,12 @@
 
 .label.label-primary.list-item-block {
   display: block;
-  width: 200px;
+  width: 150px;
   margin: 3px;
+}
+
+@media (max-width: 768px) {
+  .destination-label {
+    font-size: 18px;
+  }
 }
