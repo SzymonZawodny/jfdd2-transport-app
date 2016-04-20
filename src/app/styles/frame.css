@@ -132,7 +132,14 @@ border-radius: 0;
 }
 
 /*MEDIA QUERIES*/
+@media (max-width: 768px) {
+  #logo-half {
+    display: none;
+  }
+}
+
 @media (min-width: 768px) {
+
   #wrapper {
     padding-left: 80px;
   }
