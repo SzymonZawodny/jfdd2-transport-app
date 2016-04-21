@@ -136,7 +136,7 @@
     <div class="panel container-fluid" ng-show=ifTabSelected(1) ng-controller="busStopsController">
       <h1 class="stopsHeader">Lista przystanków</h1>
       <ul class="busStopScrollList col-md-4 hover-hand">
-        <li ng-click="showBusStopDetail(busStop)" ng-repeat="busStop in busStops">{{busStop.name}}</li>
+        <li ng-click="showBusStopDetail(busStop)" ng-repeat="busStop in busStops | localeOrderBy:'name'">{{busStop.name}}</li>
       </ul>
       <div class="busStopInfo col-sm-8">
         <table class="table table-striped table-stops">

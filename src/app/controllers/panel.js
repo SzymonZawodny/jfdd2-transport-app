@@ -8,8 +8,14 @@ function panelController($scope, busStopService, lineDetailsService, $log) {
   $scope.isCollapsed = true;
 
   //symulacja serwera
-  $scope.busStops = busStopService.getStops();
-  $scope.linesDetails = lineDetailsService.getLinesDetails();
+  busStopService.getStops(function(stops){
+    $scope.busStops = stops;
+    $scope.$apply();
+    console.log($scope.busStops);
+  });
+  lineDetailsService.getLinesDetails(function(lines) {
+    $scope.linesDetails = lines;
+  });
 
   $scope.selectTab = function (setTab) {
     if (setTab >0 && setTab<=4){
