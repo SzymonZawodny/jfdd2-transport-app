@@ -9,12 +9,13 @@ function linesCtrl($scope) {
   }
 
   $scope.$watch('ifTabSelected(2)', function() {
-    $scope.selectedLine = $scope.linesDetails.filter(function(singleLine){
+    if ($scope.linesDetails != undefined) {
+      $scope.selectedLine = $scope.linesDetails.filter(function (singleLine) {
         return singleLine.line === selectedLineName;
-    });
-      if ($scope.selectedLine[0] !== undefined){
+      });
+      if ($scope.selectedLine[0] !== undefined) {
         $scope.readLineStops($scope.selectedLine[0].line);
       }
-
+    }
   });
 }

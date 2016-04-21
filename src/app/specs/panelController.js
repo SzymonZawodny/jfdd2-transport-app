@@ -110,47 +110,6 @@ QUnit.test('Changing tabs', function(assert) {
 });
 
 QUnit.test('Filtering bus stop details', function(assert) {
-  this.mockScope.changeBusStopDetail('Buraczana');
-  assert.deepEqual(this.mockScope.busStop,
-    {
-      "bus": [
-        {
-          "departures": [
-            "0709",
-            "0739",
-            "0809",
-            "0839",
-            "0909",
-            "0939",
-            "1009",
-            "1039",
-            "1109",
-            "1139",
-            "1209",
-            "1239",
-            "1309",
-            "1339",
-            "1409",
-            "1439",
-            "1509",
-            "1539",
-            "1609",
-            "1639",
-            "1709",
-            "1739",
-            "1809",
-            "1839",
-            "1909",
-            "1939",
-            "2009"
-          ],
-          "destination": "Tuwima",
-          "line": "145"
-        }
-      ],
-      "name": "Buraczana"
-    }, 'Bus stops filtered by bus stop name - input = bus stop name / result = bus stop object');
-
   this.mockScope.changeBusStopDetail('non-existing name');
   assert.deepEqual(this.mockScope.busStop, undefined, 'Bus stops filtered by non-existing bus stop name -  result = undefined');
 
