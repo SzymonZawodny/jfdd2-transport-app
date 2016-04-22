@@ -30,6 +30,7 @@ function googlePlusModalCtrl($scope, $uibModal, $log){
         'onsuccess': function(googleUser) {
           onSignIn(googleUser);
           $log.info('user sign in');
+          modalInstance.close();
         },
         'onfailure': signOut
       });
