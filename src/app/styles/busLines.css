@@ -44,8 +44,16 @@
   margin: 3px;
 }
 
+.col-line-no {
+  width: 200px;
+}
+
 @media (max-width: 768px) {
   .destination-label {
     font-size: 18px;
+  }
+
+  .col-line-no {
+    width: 100px;
   }
 }
