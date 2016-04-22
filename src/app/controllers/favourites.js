@@ -98,7 +98,6 @@ $log.info('loaded service content: simulation server, function to view');
 
     function updateFavouriteBusStops() {
       readFavouriteBusStops();
-
       $scope.favoriteBusStops.push($scope.busStops[selectedBusStopIndex]);
 
       createFilteredUser();
@@ -121,6 +120,7 @@ $log.info('loaded service content: simulation server, function to view');
     });
     if ($scope.user[0] !== undefined) {
       $scope.favoriteBusStops = $scope.user[0].favouriteBusStops || [];
+      $scope.busLines = uniqueLines($scope.favoriteBusStops);
     }
   }
 
