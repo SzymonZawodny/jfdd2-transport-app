@@ -11,7 +11,6 @@ function panelController($scope, busStopService, lineDetailsService, $log) {
   busStopService.getStops(function(stops){
     $scope.busStops = stops;
     $scope.$apply();
-    console.log($scope.busStops);
   });
   lineDetailsService.getLinesDetails(function(lines) {
     $scope.linesDetails = lines;
@@ -43,10 +42,12 @@ function panelController($scope, busStopService, lineDetailsService, $log) {
     selectedLineName = line;
   };
 
-  $scope.changeBusStopDetail = function changeBusStopDetail(selectedBusStopName){
-    $scope.selectedBusStop = $scope.busStops.filter(function(singleBusStop){
-      return singleBusStop.name === selectedBusStopName;
-    });
-    $scope.showBusStopDetail($scope.selectedBusStop[0]);
+  $scope.changeBusStopDetail = function changeBusStopDetail(selectedBusStopName) {
+    if ($scope.busStops !== undefined) {
+      $scope.selectedBusStop = $scope.busStops.filter(function (singleBusStop) {
+        return singleBusStop.name === selectedBusStopName;
+      });
+      $scope.showBusStopDetail($scope.selectedBusStop[0]);
+    }
   };
 }

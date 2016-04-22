@@ -161,7 +161,7 @@
             <td class="col-departures border">
               <div>
                 <h4>
-                  <span class="label label-primary departure-span" ng-repeat="departure in bus.departures"
+                  <span class="label label-primary departure-span" ng-repeat="departure in bus.departures track by $index"
                           ng-click="getDetails(bus.line, bus.destination, departure, busStop.name, $index)">{{departure}}
                   </span>
                 </h4>
@@ -307,6 +307,7 @@
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="controllers/localeOrderBy.js"></script>
 <script src="controllers/closeLineDetailsModal.js"></script>
 <script src="controllers/googlePlusModal.js"></script>
 <script src="controllers/panel.js"></script>
