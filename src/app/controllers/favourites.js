@@ -3,7 +3,6 @@ $log.info('loaded service content: simulation server, function to view');
   $scope.oneAtATime = true;
   var selected = "";
   $scope.allUsersFavourites = localStorageService.get('allUsersFavourites') || [];
-  //getAllUsersFavouritesFromServer();
   $scope.userEmail = userEmail;
   $scope.favoriteBusStops = [];
   $scope.user = {};
@@ -12,6 +11,7 @@ $log.info('loaded service content: simulation server, function to view');
   $scope.mostPopularBusStops = [];
 
   $scope.$watch('ifTabSelected(4)', function() {
+    $scope.favoriteBusStops = [];
     readFavouriteBusStops();
   });
 
@@ -26,37 +26,6 @@ $log.info('loaded service content: simulation server, function to view');
   $scope.newBusStopObject = newBusStopObject;
   $scope.uniqueLines = uniqueLines;
   readMostPopularFromLocalStorage();
-
-  //function getAllUsersFavouritesFromServer(){
-  //  $.ajax({
-  //    type: 'GET',
-  //    url: 'http://isa-api2.herokuapp.com/transport/lines',
-  //    dataType: 'json',
-  //    success: function(receivedData){
-  //      $scope.allUsersFavourites = receivedData.val;
-  //      console.log($scope.allUsersFavourites);
-  //    },
-  //    error: function(error){
-  //      console.log(error);
-  //      $scope.allUsersFavourites = [];
-  //    }
-  //  });
-  //}
-  //
-  //function submit(key, val){
-  //  var favouritesJSON = {
-  //    key: key,
-  //    val: val
-  //  };
-  //  $.ajax({
-  //    type: 'PUT',
-  //    url: 'http://........',
-  //    contentType: 'application.json',
-  //    data: 'JSON.stringify(favouritesJSON)',
-  //    success: function(data){console.log('Favourites sent to server.')},
-  //    error: function(error){console.log(error)}
-  //  });
-  //}
 
   function submit(key, val) {
     return localStorageService.set(key, val);
