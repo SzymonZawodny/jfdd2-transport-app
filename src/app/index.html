@@ -161,7 +161,7 @@
             <td class="col-departures border">
               <div>
                 <h4>
-                  <span class="label label-primary departure-span" ng-repeat="departure in bus.departures"
+                  <span class="label label-primary departure-span" ng-repeat="departure in bus.departures track by $index"
                           ng-click="getDetails(bus.line, bus.destination, departure, busStop.name, $index)">{{departure}}
                   </span>
                 </h4>
