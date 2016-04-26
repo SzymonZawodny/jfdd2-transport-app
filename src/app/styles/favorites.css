@@ -70,11 +70,16 @@
   font-size: 16px;
   display: inline-block;
   margin-right: 10px;
+  transition: all 0.3s ease;
 }
 
-#page-content-wrapper .busStopAccordion .departure-span:hover {
+.departure-span:hover {
+  background-color: #000367;
+}
+
+#page-content-wrapper .departure-span:hover {
   cursor: pointer;
-  cursor: hand;;
+  cursor: hand;
 }
 
 .busStopAccordion .btn-favorites-remove {
@@ -98,6 +103,16 @@
 
 .modal-body .past-elements{
   opacity: 0.2;
+}
+
+.modal-body .most-popular-label{
+  font-size: 24px;
+}
+
+.modal-body .favourites-star {
+  position: relative;
+  left: -10px;
+  top: -3px;
 }
 
 .bus-destination-label{

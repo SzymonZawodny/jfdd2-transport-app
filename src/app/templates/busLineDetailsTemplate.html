@@ -2,8 +2,8 @@
     <p class="modal-title"><b>Detale przejazdu autobusu:</b></p>
   </div>
   <div class="modal-body bus-lines-modal">
-    <h3><span class="label label-primary">{{busDetailsArray[0]}}</span></h3>
-    <h4 class="bus-destination-label-modal"><span class="label label-primary">{{busDetailsArray[1]}}</span></h4>
+    <h3><span class="label label-primary no-hover-effect">{{busDetailsArray[0]}}</span></h3>
+    <h4 class="bus-destination-label-modal"><span class="label label-primary no-hover-effect">{{busDetailsArray[1]}}</span></h4>
 
     <table class="table table-striped table-stops">
       <tr>
@@ -13,24 +13,24 @@
       </tr>
       <tr class="past-elements" ng-repeat="busStop in pastBusStops">
         <td class="col-stop-name border">
-          <h3><span class="label label-primary modal-label">{{busStop}}</span></h3>
+          <h3><span class="label label-primary modal-label no-hover-effect">{{busStop}}</span></h3>
         </td>
         <td class="col-stop-name border">
           <img src="images/others/line-stop-icon.png">
         </td>
         <td class="col-departures border">
-          <h4><span class="label label-primary departure-span modal-label">{{timetable[0].timetable[$index]}}</span></h4>
+          <h4><span class="label label-primary departure-span modal-label no-hover-effect">{{timetable[0].timetable[$index]}}</span></h4>
         </td>
       </tr>
       <tr ng-repeat="busStop in remainingBusStops">
         <td class="col-stop-name border">
-          <h3><span class="label label-primary modal-label">{{busStop}}</span></h3>
+          <h3><span class="label label-primary modal-label no-hover-effect">{{busStop}}</span></h3>
         </td>
         <td class="col-stop-name border">
           <img src="images/others/line-stop-icon.png">
         </td>
         <td class="col-departures border">
-          <h4><span class="label label-primary departure-span modal-label">{{timetable[0].timetable[$index+selectedBusStopIndex]}}</span></h4>
+          <h4><span class="label label-primary departure-span modal-label no-hover-effect">{{timetable[0].timetable[$index+selectedBusStopIndex]}}</span></h4>
         </td>
       </tr>
     </table>

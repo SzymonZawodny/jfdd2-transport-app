@@ -1,0 +1,59 @@
+.panel.panel-primary.no-padding {
+  padding: 0;
+  margin-right: 20px;
+  max-width: 340px;
+}
+
+.panel-heading.white {
+  color: #FFF;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.label-lines {
+  font-size: 20px;
+  margin: 0 8px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.destination-label {
+  width: auto;
+  font-size: 24px;
+  color: #337ab7;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.destination-label th{
+  text-align: center;
+  line-height: 50px;
+}
+
+.label:hover{
+  background-color: #000367;
+}
+
+.label{
+  transition: all 0.3s ease;
+}
+
+.label.label-primary.list-item-block {
+  display: block;
+  width: 150px;
+  margin: 3px;
+}
+
+.col-line-no {
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .destination-label {
+    font-size: 18px;
+  }
+
+  .col-line-no {
+    width: 100px;
+  }
+}

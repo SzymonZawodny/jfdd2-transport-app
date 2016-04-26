@@ -1,0 +1,22 @@
+  <div class="modal-header">
+    <p class="modal-title"><b>Najpopularniejsze przystanki:</b></p>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped table-stops">
+      <tr>
+        <td class="col-line-no-header border background-color"><b>Przystanek</b></td>
+        <td class="col-departures col-departures-header border background-color"><b>Ilość dodań do ulubionych</b></td>
+      </tr>
+      <tr ng-repeat="busStop in mostPopularBusStops">
+        <td class="col-stop-name border">
+          <h4><span class="label label-primary most-popular-label">{{busStop.name}}</span></h4>
+        </td>
+        <td class="col-departures border">
+          <h4><img class="favourites-star" src="images/others/favourites.png"><span class="most-popular-label">{{busStop.count}}</span></h4>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Zamknij</button>
+  </div>
